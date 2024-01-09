@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/close_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/common_ripple"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/close_icon" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="Do you like our app?"
+        android:textColor="#FF000000"
+        android:textSize="18dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/poor_ln"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/radius_background"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <View
+                android:id="@+id/poor_btn"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/common_ripple"
+                app:layout_constraintBottom_toBottomOf="@id/poor_txt"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/poor_icon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:paddingTop="16dp"
+                android:scaleType="centerInside"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/poor_icon" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/poor_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingBottom="16dp"
+                android:text="Not exactly"
+                android:textColor="#FF000000"
+                android:textSize="18dp"
+                app:layout_constraintTop_toBottomOf="@id/poor_icon" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/great_ln"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1"
+            android:background="@drawable/radius_background"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <View
+                android:id="@+id/great_btn"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/common_ripple"
+                app:layout_constraintBottom_toBottomOf="@id/cool_txt"
+                app:layout_constraintTop_toTopOf="@id/great_icon" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/great_icon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:paddingTop="16dp"
+                android:scaleType="centerInside"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/poor_icon" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/cool_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingBottom="16dp"
+                android:text="Yes, it's cool"
+                android:textColor="#FF000000"
+                android:textSize="18dp"
+                app:layout_constraintTop_toBottomOf="@id/great_icon" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
