@@ -25,6 +25,7 @@ public class SwitchToDialog extends Dialog implements View.OnClickListener {
     private ConstraintLayout currtenBg;
 
     private AppCompatTextView smartTxt;
+
     private AppCompatTextView maxtimeTxt;
     private AppCompatTextView sleepmodeTxt;
     private AppCompatTextView currentTxt;
