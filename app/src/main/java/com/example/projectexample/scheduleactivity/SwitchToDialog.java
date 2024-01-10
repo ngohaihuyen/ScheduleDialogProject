@@ -65,6 +65,11 @@ public class SwitchToDialog extends Dialog implements View.OnClickListener {
         maxtimeBg = findViewById(R.id.maximum_standby_time_ct);
         sleepmodeBg = findViewById(R.id.sleep_mode_ct);
         currtenBg = findViewById(R.id.current_mode_ct);
+
+        smartBg.setOnClickListener(this);
+        maxtimeBg.setOnClickListener(this);
+        sleepmodeBg.setOnClickListener(this);
+        currtenBg.setOnClickListener(this);
     }
 
     private void initTxt() {
@@ -72,6 +77,11 @@ public class SwitchToDialog extends Dialog implements View.OnClickListener {
         maxtimeTxt = findViewById(R.id.maximum_standby_time_txt);
         sleepmodeTxt = findViewById(R.id.sleep_mode_txt);
         currentTxt = findViewById(R.id.current_mode_txt);
+
+        smartTxt.setOnClickListener(this);
+        maxtimeTxt.setOnClickListener(this);
+        sleepmodeTxt.setOnClickListener(this);
+        currentTxt.setOnClickListener(this);
     }
 
     @Override
@@ -91,57 +101,43 @@ public class SwitchToDialog extends Dialog implements View.OnClickListener {
     }
 
     private void checkSelectOption() {
+
         int selectTextColor = ContextCompat.getColor(getContext(), R.color.blue_color);
         int selectBgColor = ContextCompat.getColor(getContext(), R.color.grey_color);
         int normalTextColor = ContextCompat.getColor(getContext(), R.color.grey_color);
         int normalBgColor = ContextCompat.getColor(getContext(), R.color.white);
 
         if (selectBtnId == R.id.smart_power_saving_ct) {
-            smartSelection(smartTxt, smartBg, selectTextColor, selectBgColor);
-            maxTimeSelection(maxtimeTxt, maxtimeBg, normalTextColor, normalBgColor);
-            sleepSelection(sleepmodeTxt, sleepmodeBg, normalTextColor, normalBgColor);
-            currentSelection(currentTxt, currtenBg, normalTextColor, normalBgColor);
-
-        }
-        if (selectBtnId == R.id.maximum_standby_time_ct) {
-            smartSelection(smartTxt, smartBg, normalTextColor, normalBgColor);
-            maxTimeSelection(maxtimeTxt, maxtimeBg, selectTextColor, selectBgColor);
-            sleepSelection(sleepmodeTxt, sleepmodeBg, normalTextColor, normalBgColor);
-            currentSelection(currentTxt, currtenBg, normalTextColor, normalBgColor);
-
-        }
-        if (selectBtnId == R.id.sleep_mode_ct) {
-            smartSelection(smartTxt, smartBg, normalTextColor, normalBgColor);
-            maxTimeSelection(maxtimeTxt, maxtimeBg, normalTextColor, normalBgColor);
-            sleepSelection(sleepmodeTxt, sleepmodeBg, selectTextColor, selectBgColor);
-            currentSelection(currentTxt, currtenBg, normalTextColor, normalBgColor);
-        }
-        if (selectBtnId == R.id.current_mode_ct) {
-            smartSelection(smartTxt, smartBg, normalTextColor, normalBgColor);
-            maxTimeSelection(maxtimeTxt, maxtimeBg, normalTextColor, normalBgColor);
-            sleepSelection(sleepmodeTxt, sleepmodeBg, normalTextColor, normalBgColor);
-            currentSelection(currentTxt, currtenBg, selectTextColor, selectBgColor);
+            updateSelection(smartTxt, smartBg, R.id.smart_power_saving_ct, selectTextColor, selectBgColor);
+            updateSelection(maxtimeTxt, maxtimeBg, R.id.maximum_standby_time_ct, normalTextColor, normalBgColor);
+            updateSelection(sleepmodeTxt, sleepmodeBg, R.id.sleep_mode_ct, normalTextColor, normalBgColor);
+            updateSelection(currentTxt, currtenBg, R.id.current_mode_ct, normalTextColor, normalBgColor);
+        } else if (selectBtnId == R.id.maximum_standby_time_ct) {
+            updateSelection(smartTxt, smartBg, R.id.smart_power_saving_ct, normalTextColor, normalBgColor);
+            updateSelection(maxtimeTxt, maxtimeBg, R.id.maximum_standby_time_ct, selectTextColor, selectBgColor);
+            updateSelection(sleepmodeTxt, sleepmodeBg, R.id.sleep_mode_ct, normalTextColor, normalBgColor);
+            updateSelection(currentTxt, currtenBg, R.id.current_mode_ct, normalTextColor, normalBgColor);
+        } else if (selectBtnId == R.id.sleep_mode_ct) {
+            updateSelection(smartTxt, smartBg, R.id.smart_power_saving_ct, normalTextColor, normalBgColor);
+            updateSelection(maxtimeTxt, maxtimeBg, R.id.maximum_standby_time_ct, normalTextColor, normalBgColor);
+            updateSelection(sleepmodeTxt, sleepmodeBg, R.id.sleep_mode_ct, selectTextColor, selectBgColor);
+            updateSelection(currentTxt, currtenBg, R.id.current_mode_ct, normalTextColor, normalBgColor);
+        } else if (selectBtnId == R.id.current_mode_ct) {
+            updateSelection(smartTxt, smartBg, R.id.smart_power_saving_ct, normalTextColor, normalBgColor);
+            updateSelection(maxtimeTxt, maxtimeBg, R.id.maximum_standby_time_ct, normalTextColor, normalBgColor);
+            updateSelection(sleepmodeTxt, sleepmodeBg, R.id.sleep_mode_ct, normalTextColor, normalBgColor);
+            updateSelection(currentTxt, currtenBg, R.id.current_mode_ct, selectTextColor, selectBgColor);
         }
     }
 
-    private void smartSelection(AppCompatTextView smartTextView, ConstraintLayout smartBackground, int textColor, int bgColor) {
-        smartTextView.setTextColor(textColor);
-        smartBackground.setBackgroundColor(bgColor);
-    }
-
-    private void maxTimeSelection(AppCompatTextView maxTimeTextView, ConstraintLayout maxTimeBackground, int textColor, int bgColor) {
-        maxTimeTextView.setTextColor(textColor);
-        maxTimeBackground.setBackgroundColor(bgColor);
-    }
-
-    private void sleepSelection(AppCompatTextView sleepTextView, ConstraintLayout sleepBackground, int textColor, int bgColor) {
-        sleepTextView.setTextColor(textColor);
-        sleepBackground.setBackgroundColor(bgColor);
-    }
-
-    private void currentSelection(AppCompatTextView currentTextView, ConstraintLayout currentBackground, int textColor, int bgColor) {
-        currentTextView.setTextColor(textColor);
-        currentBackground.setBackgroundColor(bgColor);
+    private void updateSelection(AppCompatTextView textView, ConstraintLayout backGround, int idSelected, int textColor, int bgColor) {
+        if (selectBtnId == idSelected) {
+            textView.setTextColor(ContextCompat.getColor(getContext(), R.color.blue_color));
+            backGround.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.grey_color));
+        } else {
+            textView.setTextColor(ContextCompat.getColor(getContext(), R.color.grey_color));
+            backGround.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.white));
+        }
     }
 }
 
