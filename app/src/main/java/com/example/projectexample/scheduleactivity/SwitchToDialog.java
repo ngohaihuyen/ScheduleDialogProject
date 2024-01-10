@@ -16,10 +16,8 @@ import com.example.projectexample.R;
 
 public class SwitchToDialog extends Dialog implements View.OnClickListener {
     private AppCompatImageView closeButton;
-    private ConstraintLayout cancelButton;
-    private ConstraintLayout okButton;
+    private ConstraintLayout cancelButton, okButton, smartBg;
 
-    private ConstraintLayout smartBg;
     private ConstraintLayout maxtimeBg;
     private ConstraintLayout sleepmodeBg;
     private ConstraintLayout currtenBg;
@@ -80,21 +78,16 @@ public class SwitchToDialog extends Dialog implements View.OnClickListener {
     public void onClick(View v) {
         if (v.getId() == R.id.close_icon || v.getId() == R.id.cancel_ct || v.getId() == R.id.ok_ct) {
             dismiss();
-        } else {
-            selectOption();
+        } else if (v.getId() == R.id.smart_power_saving_ct) {
+            selectBtnId = R.id.smart_power_saving_ct;
+        } else if (v.getId() == R.id.maximum_standby_time_ct) {
+            selectBtnId = R.id.maximum_standby_time_ct;
+        } else if (v.getId()== R.id.sleep_mode_ct) {
+            selectBtnId = R.id.sleep_mode_ct;
+        } else if (v.getId() == R.id.current_mode_ct) {
+            selectBtnId = R.id.current_mode_ct;
         }
-    }
-
-    private void selectOption() {
-        if (selectBtnId == R.id.smart_power_saving_ct){
-            checkSelectOption();
-        } else if (selectBtnId == R.id.maximum_standby_time_ct) {
-            checkSelectOption();
-        } else if (selectBtnId == R.id.sleep_mode_ct) {
-            checkSelectOption();
-        } else if (selectBtnId == R.id.current_mode_ct) {
-            checkSelectOption();
-        }
+        checkSelectOption();
     }
 
     private void checkSelectOption() {
@@ -109,19 +102,21 @@ public class SwitchToDialog extends Dialog implements View.OnClickListener {
             sleepSelection(sleepmodeTxt, sleepmodeBg, normalTextColor, normalBgColor);
             currentSelection(currentTxt, currtenBg, normalTextColor, normalBgColor);
 
-        } else if (selectBtnId == R.id.maximum_standby_time_ct) {
+        }
+        if (selectBtnId == R.id.maximum_standby_time_ct) {
             smartSelection(smartTxt, smartBg, normalTextColor, normalBgColor);
             maxTimeSelection(maxtimeTxt, maxtimeBg, selectTextColor, selectBgColor);
             sleepSelection(sleepmodeTxt, sleepmodeBg, normalTextColor, normalBgColor);
             currentSelection(currentTxt, currtenBg, normalTextColor, normalBgColor);
 
-        } else if (selectBtnId == R.id.sleep_mode_ct) {
+        }
+        if (selectBtnId == R.id.sleep_mode_ct) {
             smartSelection(smartTxt, smartBg, normalTextColor, normalBgColor);
             maxTimeSelection(maxtimeTxt, maxtimeBg, normalTextColor, normalBgColor);
             sleepSelection(sleepmodeTxt, sleepmodeBg, selectTextColor, selectBgColor);
             currentSelection(currentTxt, currtenBg, normalTextColor, normalBgColor);
-
-        } else if (selectBtnId == R.id.current_mode_ct) {
+        }
+        if (selectBtnId == R.id.current_mode_ct) {
             smartSelection(smartTxt, smartBg, normalTextColor, normalBgColor);
             maxTimeSelection(maxtimeTxt, maxtimeBg, normalTextColor, normalBgColor);
             sleepSelection(sleepmodeTxt, sleepmodeBg, normalTextColor, normalBgColor);
