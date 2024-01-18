@@ -16,19 +16,10 @@ import com.example.projectexample.R;
 
 public class SwitchToDialog extends Dialog implements View.OnClickListener {
     private AppCompatImageView closeButton;
-    private ConstraintLayout cancelButton, okButton, smartBg;
+    private ConstraintLayout cancelButton, okButton, smartBg, maxtimeBg, sleepmodeBg, currtenBg;
+    private AppCompatTextView smartTxt, maxtimeTxt, sleepmodeTxt, currentTxt;
 
-    private ConstraintLayout maxtimeBg;
-    private ConstraintLayout sleepmodeBg;
-    private ConstraintLayout currtenBg;
-
-    private AppCompatTextView smartTxt;
-
-    private AppCompatTextView maxtimeTxt;
-    private AppCompatTextView sleepmodeTxt;
-    private AppCompatTextView currentTxt;
-
-    private int selectBtnId =-1 ;
+    private int selectBtnId = -1;
 
 
     public SwitchToDialog(@NonNull Context context) {
@@ -47,41 +38,38 @@ public class SwitchToDialog extends Dialog implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.switchto_dialog);
-        closeButton = findViewById(R.id.close_icon);
-        okButton = findViewById(R.id.ok_ct);
-        cancelButton = findViewById(R.id.cancel_ct);
+        initViews();
+        setOnClickViews();
 
-        initBtn();
-        initTxt();
+    }
 
+    private void setOnClickViews() {
         closeButton.setOnClickListener(this);
         okButton.setOnClickListener(this);
         cancelButton.setOnClickListener(this);
-    }
-
-
-    private void initBtn() {
-        smartBg = findViewById(R.id.smart_power_saving_ct);
-        maxtimeBg = findViewById(R.id.maximum_standby_time_ct);
-        sleepmodeBg = findViewById(R.id.sleep_mode_ct);
-        currtenBg = findViewById(R.id.current_mode_ct);
 
         smartBg.setOnClickListener(this);
         maxtimeBg.setOnClickListener(this);
         sleepmodeBg.setOnClickListener(this);
         currtenBg.setOnClickListener(this);
+
     }
 
-    private void initTxt() {
+    private void initViews() {
+        closeButton = findViewById(R.id.close_icon);
+        okButton = findViewById(R.id.ok_ct);
+        cancelButton = findViewById(R.id.cancel_ct);
+
+        smartBg = findViewById(R.id.smart_power_saving_ct);
+        maxtimeBg = findViewById(R.id.maximum_standby_time_ct);
+        sleepmodeBg = findViewById(R.id.sleep_mode_ct);
+        currtenBg = findViewById(R.id.current_mode_ct);
+
         smartTxt = findViewById(R.id.smart_power_saving_txt);
         maxtimeTxt = findViewById(R.id.maximum_standby_time_txt);
         sleepmodeTxt = findViewById(R.id.sleep_mode_txt);
         currentTxt = findViewById(R.id.current_mode_txt);
 
-        smartTxt.setOnClickListener(this);
-        maxtimeTxt.setOnClickListener(this);
-        sleepmodeTxt.setOnClickListener(this);
-        currentTxt.setOnClickListener(this);
     }
 
     @Override
@@ -92,7 +80,7 @@ public class SwitchToDialog extends Dialog implements View.OnClickListener {
             selectBtnId = R.id.smart_power_saving_ct;
         } else if (v.getId() == R.id.maximum_standby_time_ct) {
             selectBtnId = R.id.maximum_standby_time_ct;
-        } else if (v.getId()== R.id.sleep_mode_ct) {
+        } else if (v.getId() == R.id.sleep_mode_ct) {
             selectBtnId = R.id.sleep_mode_ct;
         } else if (v.getId() == R.id.current_mode_ct) {
             selectBtnId = R.id.current_mode_ct;
