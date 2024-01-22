@@ -6,7 +6,6 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
-
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_anim"
             android:layout_width="50dp"
