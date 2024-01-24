@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/line_color">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -13,24 +14,555 @@
             android:layout_height="match_parent">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/text1"
+                android:id="@+id/tools_txt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/test_tetx"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:text="@string/tools"
+                android:textSize="28sp"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toTopOf="parent"/>
 
-            <View
-                android:id="@+id/between_view"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                app:layout_constraintTop_toBottomOf="@id/text1" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/tools_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/tools_icon"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/text2"
-                android:layout_width="match_parent"
+                android:id="@+id/antivirus_security_txt"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/test_tetx"
-                app:layout_constraintTop_toBottomOf="@id/between_view" />
+                android:text="@string/antivirus_and_security"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tools_txt" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/first_ct"
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/tools_layout_background"
+                app:layout_constraintTop_toBottomOf="@id/antivirus_security_txt"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <View
+                    android:id="@+id/scan_virus_bg"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/secure_wifi_bg"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/scan_virus_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/spider_icon"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toTopOf="@id/scan_virus_bg"
+                    app:layout_constraintStart_toStartOf="@id/scan_virus_bg"
+                    app:layout_constraintEnd_toEndOf="@id/scan_virus_bg"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/scan_virus_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/scan_virus"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@id/scan_virus_icon"
+                    app:layout_constraintStart_toStartOf="@id/scan_virus_bg"
+                    app:layout_constraintEnd_toEndOf="@id/scan_virus_bg"
+                    app:layout_constraintBottom_toBottomOf="@id/scan_virus_bg"/>
+
+                <View
+                    android:id="@+id/secure_wifi_bg"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:layout_constraintEnd_toStartOf="@id/app_lock_bg"
+                    app:layout_constraintStart_toEndOf="@id/scan_virus_bg"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/secure_wifi_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/secure_wifi_icon"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toTopOf="@id/secure_wifi_bg"
+                    app:layout_constraintStart_toStartOf="@id/secure_wifi_bg"
+                    app:layout_constraintEnd_toEndOf="@id/secure_wifi_bg" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/secure_wifi_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/secure_wifi"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@id/secure_wifi_icon"
+                    app:layout_constraintStart_toStartOf="@id/secure_wifi_bg"
+                    app:layout_constraintEnd_toEndOf="@id/secure_wifi_bg"
+                    app:layout_constraintBottom_toBottomOf="@id/secure_wifi_bg"/>
+
+                <View
+                    android:id="@+id/app_lock_bg"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:layout_constraintStart_toEndOf="@id/secure_wifi_bg"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/first_ct"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/app_lock_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/cpu_lock_1"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toTopOf="@id/app_lock_bg"
+                    app:layout_constraintStart_toStartOf="@id/app_lock_bg"
+                    app:layout_constraintEnd_toEndOf="@id/app_lock_bg" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/app_lock_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_lock"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@id/app_lock_icon"
+                    app:layout_constraintStart_toStartOf="@id/app_lock_bg"
+                    app:layout_constraintEnd_toEndOf="@id/app_lock_bg"
+                    app:layout_constraintBottom_toBottomOf="@id/app_lock_bg"/>
+
+                <View
+                    android:id="@+id/auto_scan_bg"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:layout_constraintEnd_toEndOf="@id/scan_virus_bg"
+                    app:layout_constraintTop_toBottomOf="@id/scan_virus_bg"
+                    app:layout_constraintBottom_toBottomOf="@id/first_ct"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/auto_scan_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/auto_scan_icon"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toTopOf="@id/auto_scan_bg"
+                    app:layout_constraintStart_toStartOf="@id/auto_scan_bg"
+                    app:layout_constraintEnd_toEndOf="@id/auto_scan_bg" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/auto_scan_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/auto_scan"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@id/auto_scan_icon"
+                    app:layout_constraintStart_toStartOf="@id/auto_scan_bg"
+                    app:layout_constraintEnd_toEndOf="@id/auto_scan_bg"
+                    app:layout_constraintBottom_toBottomOf="@id/auto_scan_bg"/>
+
+                <View
+                    android:id="@+id/secret_browser_bg"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:layout_constraintStart_toStartOf="@id/secure_wifi_bg"
+                    app:layout_constraintTop_toBottomOf="@id/secure_wifi_bg"
+                    app:layout_constraintBottom_toBottomOf="@id/first_ct"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/secret_browser_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/secret_browser_icon"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toTopOf="@id/secret_browser_bg"
+                    app:layout_constraintStart_toStartOf="@id/secret_browser_bg"
+                    app:layout_constraintEnd_toEndOf="@id/secret_browser_bg" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/secret_browser_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/secret_browser"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@id/secret_browser_icon"
+                    app:layout_constraintStart_toStartOf="@id/secret_browser_bg"
+                    app:layout_constraintEnd_toEndOf="@id/secret_browser_bg"
+                    app:layout_constraintBottom_toBottomOf="@id/secret_browser_bg"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/second_ct"
+                android:layout_width="match_parent"
+                android:layout_height="69dp"
+                android:layout_margin="20dp"
+                android:background="@drawable/tools_layout_background"
+                app:layout_constraintTop_toBottomOf="@id/first_ct">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/join_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/join_icon"
+                    android:layout_margin="20dp"
+                    app:layout_constraintTop_toTopOf="@id/second_ct"
+                    app:layout_constraintStart_toStartOf="@id/second_ct"
+                    app:layout_constraintBottom_toBottomOf="@id/second_ct"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/join_antivirus_community"
+                    android:layout_marginStart="20dp"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    app:layout_constraintTop_toTopOf="@id/second_ct"
+                    app:layout_constraintBottom_toBottomOf="@id/second_ct"
+                    app:layout_constraintStart_toEndOf="@id/join_icon" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/cleaner_kit_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cleaner_kit"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                app:layout_constraintTop_toBottomOf="@id/second_ct"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/third_ct"
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:background="@drawable/tools_layout_background"
+                android:layout_margin="20dp"
+                app:layout_constraintTop_toBottomOf="@id/cleaner_kit_txt"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <View
+                    android:id="@+id/clean_junk_bg"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:layout_constraintEnd_toStartOf="@id/delete_file_bg"
+                    app:layout_constraintStart_toStartOf="@id/third_ct"
+                    app:layout_constraintTop_toTopOf="@id/third_ct" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/clean_junk_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/smart_clean_icon"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toTopOf="@id/clean_junk_bg"
+                    app:layout_constraintStart_toStartOf="@id/third_ct"
+                    app:layout_constraintEnd_toStartOf="@id/delete_file_bg" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/clean_junk_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/clean_junk"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@id/clean_junk_icon"
+                    app:layout_constraintStart_toStartOf="@id/clean_junk_bg"
+                    app:layout_constraintEnd_toEndOf="@id/clean_junk_bg"
+                    app:layout_constraintBottom_toBottomOf="@id/clean_junk_bg"/>
+
+                <View
+                    android:id="@+id/delete_file_bg"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:layout_constraintEnd_toStartOf="@id/remove_notice_bg"
+                    app:layout_constraintStart_toEndOf="@id/clean_junk_bg"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/delete_file_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/delete_large_icon"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toTopOf="@id/delete_file_bg"
+                    app:layout_constraintStart_toStartOf="@id/delete_file_bg"
+                    app:layout_constraintEnd_toEndOf="@id/delete_file_bg" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/delete_file_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/delete_large_file"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@id/delete_file_icon"
+                    app:layout_constraintStart_toStartOf="@id/delete_file_bg"
+                    app:layout_constraintEnd_toEndOf="@id/delete_file_bg"
+                    app:layout_constraintBottom_toBottomOf="@id/delete_file_bg"/>
+
+                <View
+                    android:id="@+id/remove_notice_bg"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:layout_constraintStart_toEndOf="@id/delete_file_bg"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/remove_notice_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/remove_icon"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toTopOf="@id/remove_notice_bg"
+                    app:layout_constraintStart_toStartOf="@id/remove_notice_bg"
+                    app:layout_constraintEnd_toEndOf="@id/remove_notice_bg" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/remove_notice_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/remove"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@id/remove_notice_icon"
+                    app:layout_constraintStart_toStartOf="@id/remove_notice_bg"
+                    app:layout_constraintEnd_toEndOf="@id/remove_notice_bg"
+                    app:layout_constraintBottom_toBottomOf="@id/remove_notice_bg"/>
+
+                <View
+                    android:id="@+id/similar_photo_bg"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:layout_constraintStart_toStartOf="@id/third_ct"
+                    app:layout_constraintEnd_toStartOf="@id/smart_clean_bg"
+                    app:layout_constraintTop_toBottomOf="@id/clean_junk_bg"
+                    app:layout_constraintBottom_toBottomOf="@id/third_ct"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/similar_photo_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/secure_wifi_icon"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toTopOf="@id/similar_photo_bg"
+                    app:layout_constraintStart_toStartOf="@id/similar_photo_bg"
+                    app:layout_constraintEnd_toEndOf="@id/similar_photo_bg" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/similar_photo_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/similar_photos"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@id/similar_photo_icon"
+                    app:layout_constraintStart_toStartOf="@id/similar_photo_bg"
+                    app:layout_constraintEnd_toEndOf="@id/similar_photo_bg"
+                    app:layout_constraintBottom_toBottomOf="@id/similar_photo_bg"/>
+
+                <View
+                    android:id="@+id/smart_clean_bg"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:layout_constraintStart_toStartOf="@id/delete_file_bg"
+                    app:layout_constraintTop_toBottomOf="@id/delete_file_bg"
+                    app:layout_constraintBottom_toBottomOf="@id/third_ct"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/smart_clean_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/smart_clean_icon"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toTopOf="@id/smart_clean_bg"
+                    app:layout_constraintStart_toStartOf="@id/smart_clean_bg"
+                    app:layout_constraintEnd_toEndOf="@id/smart_clean_bg" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/smart_clean_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/smart_clean"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@id/smart_clean_icon"
+                    app:layout_constraintStart_toStartOf="@id/smart_clean_bg"
+                    app:layout_constraintEnd_toEndOf="@id/smart_clean_bg"
+                    app:layout_constraintBottom_toBottomOf="@id/smart_clean_bg"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/quick_manager_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/quick_manager"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                app:layout_constraintTop_toBottomOf="@id/third_ct"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/fourth_ct"
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:background="@drawable/tools_layout_background"
+                android:layout_margin="20dp"
+                app:layout_constraintTop_toBottomOf="@id/quick_manager_txt"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <View
+                    android:id="@+id/app_manager_bg"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:layout_constraintEnd_toStartOf="@id/clip_board_bg"
+                    app:layout_constraintStart_toStartOf="@id/fourth_ct"
+                    app:layout_constraintTop_toTopOf="@id/fourth_ct" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/app_manager_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/app_manger_icon"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toTopOf="@id/app_manager_bg"
+                    app:layout_constraintStart_toStartOf="@id/fourth_ct"
+                    app:layout_constraintEnd_toEndOf="@id/app_manager_bg" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/app_manager_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_manager"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@id/app_manager_icon"
+                    app:layout_constraintStart_toStartOf="@id/app_manager_bg"
+                    app:layout_constraintEnd_toEndOf="@id/app_manager_bg"
+                    app:layout_constraintBottom_toBottomOf="@id/app_manager_bg"/>
+
+                <View
+                android:id="@+id/clip_board_bg"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:layout_constraintStart_toEndOf="@id/app_manager_bg"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/process_bg"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/clip_board_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/clipboard_icon"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintStart_toStartOf="@id/clip_board_bg"
+                    app:layout_constraintTop_toTopOf="@id/clip_board_bg"
+                    app:layout_constraintEnd_toEndOf="@id/clip_board_bg" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/clip_board_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/clipboard"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@id/clip_board_icon"
+                    app:layout_constraintStart_toStartOf="@id/clip_board_bg"
+                    app:layout_constraintEnd_toEndOf="@id/clip_board_bg"
+                    app:layout_constraintBottom_toBottomOf="@id/clip_board_bg"/>
+
+                <View
+                    android:id="@+id/process_bg"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/clip_board_bg"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/process_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/process_moniter_icon"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintStart_toStartOf="@id/process_bg"
+                    app:layout_constraintTop_toTopOf="@id/process_bg"
+                    app:layout_constraintEnd_toEndOf="@id/process_bg" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/process_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/process_moniter"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@id/process_icon"
+                    app:layout_constraintStart_toStartOf="@id/process_bg"
+                    app:layout_constraintEnd_toEndOf="@id/process_bg"
+                    app:layout_constraintBottom_toBottomOf="@id/process_bg"/>
+
+                <View
+                    android:id="@+id/temp_detect_bg"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:layout_constraintEnd_toStartOf="@id/battery_info_bg"
+                    app:layout_constraintStart_toStartOf="@id/fourth_ct"
+                    app:layout_constraintTop_toBottomOf="@id/app_manager_bg"
+                    app:layout_constraintBottom_toBottomOf="@id/fourth_ct"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/temp_detect_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/temp_detect_icon"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toTopOf="@id/temp_detect_bg"
+                    app:layout_constraintStart_toStartOf="@id/temp_detect_bg"
+                    app:layout_constraintEnd_toEndOf="@id/temp_detect_bg" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/temp_detect_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Temp Dettect"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@id/temp_detect_icon"
+                    app:layout_constraintStart_toStartOf="@id/temp_detect_bg"
+                    app:layout_constraintEnd_toEndOf="@id/temp_detect_bg"
+                    app:layout_constraintBottom_toBottomOf="@id/temp_detect_bg"/>
+
+                <View
+                    android:id="@+id/battery_info_bg"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:layout_constraintStart_toStartOf="@id/clip_board_bg"
+                    app:layout_constraintTop_toBottomOf="@id/clip_board_bg"
+                    app:layout_constraintBottom_toBottomOf="@id/fourth_ct"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/battery_info_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/battery_icon"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toTopOf="@id/battery_info_bg"
+                    app:layout_constraintStart_toStartOf="@id/battery_info_bg"
+                    app:layout_constraintEnd_toEndOf="@id/battery_info_bg" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/battery_info_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/battery_info"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@id/battery_info_icon"
+                    app:layout_constraintStart_toStartOf="@id/battery_info_bg"
+                    app:layout_constraintEnd_toEndOf="@id/battery_info_bg"
+                    app:layout_constraintBottom_toBottomOf="@id/battery_info_bg"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
