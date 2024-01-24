@@ -20,7 +20,7 @@
     <string name="app_manager">App Manager</string>
     <string name="clipboard_organizer">Clipboard Organizer</string>
     <string name="clipboard">Clipboard</string>
-    <string name="process_moniter">Process Moniter</string>
+    <string name="process">Process Moniter</string>
     <string name="battery_info">Battery Info</string>
     <string name="temp_dettect">Temp Dettect</string>
 </resources>
