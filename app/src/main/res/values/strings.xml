@@ -22,4 +22,5 @@
     <string name="clipboard">Clipboard</string>
     <string name="process_moniter">Process Moniter</string>
     <string name="battery_info">Battery Info</string>
+    <string name="temp_dettect">Temp Dettect</string>
 </resources>
