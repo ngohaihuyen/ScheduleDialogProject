@@ -85,7 +85,7 @@ public class TriangleActivity extends AppCompatActivity implements View.OnClickL
         resultTxt.setText(result);
     }
 
-    private double distance(EditText x1Edt, EditText y1Edt, EditText x2Edt, EditText y2Edt) {
+    private double calculateSide(EditText x1Edt, EditText y1Edt, EditText x2Edt, EditText y2Edt) {
         double x1 = Double.parseDouble(x1Edt.getText().toString());
         double y1 = Double.parseDouble(y1Edt.getText().toString());
         double x2 = Double.parseDouble(x2Edt.getText().toString());
@@ -94,9 +94,9 @@ public class TriangleActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private double calculatePerimeter() {
-        sideAB = distance(axEdt, ayEdt, bxEdt, byEdt);
-        sideBC = distance(bxEdt, byEdt, cxEdt, cyEdt);
-        sideCA = distance(cxEdt, cyEdt, axEdt, ayEdt);
+        sideAB = calculateSide(axEdt, ayEdt, bxEdt, byEdt);
+        sideBC = calculateSide(bxEdt, byEdt, cxEdt, cyEdt);
+        sideCA = calculateSide(cxEdt, cyEdt, axEdt, ayEdt);
         return sideAB + sideBC + sideCA;
     }
 
