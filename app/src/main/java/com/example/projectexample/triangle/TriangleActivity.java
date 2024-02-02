@@ -1,6 +1,9 @@
 package com.example.projectexample.triangle;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,54 +12,79 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatEditText;
 
 import com.example.projectexample.R;
 
-public class TriangleActivity extends AppCompatActivity implements View.OnClickListener{
-    private EditText axEdt, ayEdt, bxEdt, byEdt, cxEdt, cyEdt;
+
+public class TriangleActivity extends AppCompatActivity implements View.OnClickListener {
+    private AppCompatEditText axEdt, ayEdt, bxEdt, byEdt, cxEdt, cyEdt;
     private Button perimeterBtn, areaBtn;
     private TextView resultTxt;
-
-    private double sideAB, sideBC, sideCA;
+    private CalculateManager calculateManager;
+   private PointItem pointA ,pointB, pointC;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.triangle_activity);
 
         initViews();
+        initPoints();
+        calculateManager = new CalculateManager();
 
         perimeterBtn.setOnClickListener(this);
         areaBtn.setOnClickListener(this);
 
+        Log.d("MANHNQ", "onCreate: oncreate");
+
+        onTextChangeListener();
+
     }
+
+    private void initPoints() {
+        pointA = new PointItem();
+        pointB = new PointItem();
+        pointC = new PointItem();
+    }
+
+    private void onTextChangeListener() {
+        axEdt.addTextChangedListener(new CustomTextWatcher() {
+            @Override
+            void onCustomTextChange(CharSequence s, int start, int before, int count) {
+                Log.d("ManhNQ", "onTextChanged: "+s);
+                try {
+                    if (checkValidText(s.toString())) {
+                        pointA.setX(Float.parseFloat(s.toString()));
+                        calculateManager.setAPoint(pointA);
+                    }
+                } catch (NumberFormatException e) {
+                    showAlertDialog("LỖI", "Vui lòng nhập một số hợp lệ");
+                }
+            }
+        });
+    }
+
 
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.perimeter_btn) {
             if (checkValid()) {
-                double perimeter = calculatePerimeter();
-                if (perimeter >= 0) {
-                    displayResult("Ket qua: " + perimeter);
-                } else {
-                    displayError("Ket qua khong hop ly");
-                }
+                float chuvi = calculateManager.calculatePerimeter();
+                displayResult(String.valueOf(chuvi));
+
             }
         } else if (v.getId() == R.id.area_btn) {
             if (checkValid()) {
-                double area = calculateArea();
-                if (area >= 0) {
-                    displayResult("Ket qua: " + area);
-                } else {
-                    displayError("Ket qua khong hop ly");
-                }
+
+                float value = calculateManager.calculateArea();
+                displayResult(String.valueOf(value));
             }
         }
+
+        Log.d("MANHNQ", "onClick: on click");
     }
 
-    private void displayError(String errorMessage) {
-        displayResult(errorMessage);
-    }
 
     private boolean checkValid() {
         String ax = axEdt.getText().toString();
@@ -73,6 +101,18 @@ public class TriangleActivity extends AppCompatActivity implements View.OnClickL
         return true;
     }
 
+    private boolean checkValidText(String value) {
+        for (int i = 0; i < value.length(); i++) {
+            char c = value.charAt(i);
+            if (c < '0' || c > '9') {
+                showAlertDialog("LỖI", "Vui lòng nhập một số hợp lệ");
+                return false;
+            }
+        }
+        return true;
+    }
+
+
     private void showAlertDialog(String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(title)
@@ -85,30 +125,6 @@ public class TriangleActivity extends AppCompatActivity implements View.OnClickL
         resultTxt.setText(result);
     }
 
-    private double calculateSide(EditText x1Edt, EditText y1Edt, EditText x2Edt, EditText y2Edt) {
-        double x1 = Double.parseDouble(x1Edt.getText().toString());
-        double y1 = Double.parseDouble(y1Edt.getText().toString());
-        double x2 = Double.parseDouble(x2Edt.getText().toString());
-        double y2 = Double.parseDouble(y2Edt.getText().toString());
-        return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-    }
-
-    private double calculatePerimeter() {
-        sideAB = calculateSide(axEdt, ayEdt, bxEdt, byEdt);
-        sideBC = calculateSide(bxEdt, byEdt, cxEdt, cyEdt);
-        sideCA = calculateSide(cxEdt, cyEdt, axEdt, ayEdt);
-        return sideAB + sideBC + sideCA;
-    }
-
-    private double calculateArea() {
-        double x1 = Double.parseDouble(axEdt.getText().toString());
-        double y1 = Double.parseDouble(ayEdt.getText().toString());
-        double x2 = Double.parseDouble(bxEdt.getText().toString());
-        double y2 = Double.parseDouble(byEdt.getText().toString());
-        double x3 = Double.parseDouble(cxEdt.getText().toString());
-        double y3 = Double.parseDouble(cyEdt.getText().toString());
-        return 0.5 * (x1 *(y2 - y3) + x2 *(y3 - y1) + x3 *(y1 - y2));
-    }
 
     private void initViews() {
         axEdt = findViewById(R.id.ax_edt);
