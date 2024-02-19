@@ -22,10 +22,10 @@ public class TriangleActivity extends AppCompatActivity implements View.OnClickL
     private Button perimeterBtn, areaBtn;
     private TextView resultTxt;
     private CalculateManager calculateManager;
-   private PointItem pointA ,pointB, pointC;
+    private PointItem pointA, pointB, pointC;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState){
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.triangle_activity);
 
@@ -48,18 +48,15 @@ public class TriangleActivity extends AppCompatActivity implements View.OnClickL
         pointC = new PointItem();
     }
 
+
     private void onTextChangeListener() {
         axEdt.addTextChangedListener(new CustomTextWatcher() {
             @Override
             void onCustomTextChange(CharSequence s, int start, int before, int count) {
-                Log.d("ManhNQ", "onTextChanged: "+s);
-                try {
-                    if (checkValidText(s.toString())) {
-                        pointA.setX(Float.parseFloat(s.toString()));
-                        calculateManager.setAPoint(pointA);
-                    }
-                } catch (NumberFormatException e) {
-                    showAlertDialog("LỖI", "Vui lòng nhập một số hợp lệ");
+                Log.d("ManhNQ", "onTextChanged: " + s);
+                if (checkValidText(s.toString())) {
+                    pointA.setX(Float.parseFloat(s.toString()));
+                    calculateManager.setAPoint(pointA);
                 }
             }
         });
@@ -115,8 +112,7 @@ public class TriangleActivity extends AppCompatActivity implements View.OnClickL
 
     private void showAlertDialog(String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(title)
-                .setMessage(message);
+        builder.setTitle(title).setMessage(message);
         AlertDialog dialog = builder.create();
         dialog.show();
     }

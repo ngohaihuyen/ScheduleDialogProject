@@ -22,6 +22,7 @@
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/ax_edt"
             android:layout_width="0dp"
+            android:inputType="numberDecimal"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:hint="y" />
