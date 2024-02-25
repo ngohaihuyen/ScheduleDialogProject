@@ -13,7 +13,7 @@
         android:theme="@style/Theme.ProjectExample"
         tools:targetApi="31">
         <activity
-            android:name=".triangle.TriangleActivity"
+            android:name=".studentstorage.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical"
+    android:paddingTop="20dp">
+
+    <LinearLayout
+        android:id="@+id/classlist_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/student_list_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="STUDENT LIST"
+            android:layout_margin="30dp"
+            android:layout_gravity="center"
+            android:textSize="30dp"/>
+
+        <LinearLayout
+            android:layout_marginStart="20dp"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/class_a_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Class A:"
+                android:textSize="20dp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_marginBottom="10dp"
+                android:id="@+id/class_a_edt"
+                android:hint=" enter the number of student"
+                android:inputType="number"
+                android:textSize="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginStart="20dp"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/class_b_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Class B:"
+                android:textSize="20dp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_marginBottom="10dp"
+                android:id="@+id/class_b_edt"
+                android:hint=" enter the number of student"
+                android:textSize="20dp"
+                android:inputType="number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginStart="20dp"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/class_c_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Class C:"
+                android:textSize="20dp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_marginBottom="10dp"
+                android:id="@+id/class_c_edt"
+                android:hint=" enter the number of student"
+                android:textSize="20dp"
+                android:inputType="number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginStart="20dp"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/class_d_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Class D:"
+                android:textSize="20dp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/class_d_edt"
+                android:hint=" enter the number of student"
+                android:layout_marginBottom="10dp"
+                android:textSize="20dp"
+                android:inputType="number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginStart="20dp"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/class_e_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Class E:"
+                android:textSize="20dp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/class_e_edt"
+                android:layout_marginBottom="10dp"
+                android:hint=" enter the number of student"
+                android:textSize="20dp"
+                android:inputType="number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginStart="20dp"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/class_g_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Class G:"
+                android:textSize="20dp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/class_g_edt"
+                android:layout_marginBottom="10dp"
+                android:hint=" enter the number of student"
+                android:textSize="20dp"
+                android:inputType="number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/add_btn_2"
+            android:text="ADD"
+            android:layout_margin="20dp"
+            android:layout_gravity="end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -48,7 +48,7 @@ public class SwitchToDialog extends Dialog implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.switchto_dialog);
         closeButton = findViewById(R.id.close_icon);
-        okButton = findViewById(R.id.ok_ct);
+        okButton = findViewById(R.id.add_btn);
         cancelButton = findViewById(R.id.cancel_ct);
 
         initBtn();
@@ -61,9 +61,9 @@ public class SwitchToDialog extends Dialog implements View.OnClickListener {
 
 
     private void initBtn() {
-        smartBg = findViewById(R.id.smart_power_saving_ct);
-        maxtimeBg = findViewById(R.id.maximum_standby_time_ct);
-        sleepmodeBg = findViewById(R.id.sleep_mode_ct);
+        smartBg = findViewById(R.id.smart_ct);
+        maxtimeBg = findViewById(R.id.student_age_ct);
+        sleepmodeBg = findViewById(R.id.class_ct);
         currtenBg = findViewById(R.id.current_mode_ct);
 
         smartBg.setOnClickListener(this);
@@ -73,9 +73,9 @@ public class SwitchToDialog extends Dialog implements View.OnClickListener {
     }
 
     private void initTxt() {
-        smartTxt = findViewById(R.id.smart_power_saving_txt);
-        maxtimeTxt = findViewById(R.id.maximum_standby_time_txt);
-        sleepmodeTxt = findViewById(R.id.sleep_mode_txt);
+        smartTxt = findViewById(R.id.smart_tv);
+        maxtimeTxt = findViewById(R.id.student_age_tv);
+        sleepmodeTxt = findViewById(R.id.class_tv);
         currentTxt = findViewById(R.id.current_mode_txt);
 
         smartTxt.setOnClickListener(this);
@@ -86,14 +86,14 @@ public class SwitchToDialog extends Dialog implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.close_icon || v.getId() == R.id.cancel_ct || v.getId() == R.id.ok_ct) {
+        if (v.getId() == R.id.close_icon || v.getId() == R.id.cancel_ct || v.getId() == R.id.add_btn) {
             dismiss();
-        } else if (v.getId() == R.id.smart_power_saving_ct) {
-            selectBtnId = R.id.smart_power_saving_ct;
-        } else if (v.getId() == R.id.maximum_standby_time_ct) {
-            selectBtnId = R.id.maximum_standby_time_ct;
-        } else if (v.getId()== R.id.sleep_mode_ct) {
-            selectBtnId = R.id.sleep_mode_ct;
+        } else if (v.getId() == R.id.smart_ct) {
+            selectBtnId = R.id.smart_ct;
+        } else if (v.getId() == R.id.student_age_ct) {
+            selectBtnId = R.id.student_age_ct;
+        } else if (v.getId()== R.id.class_ct) {
+            selectBtnId = R.id.class_ct;
         } else if (v.getId() == R.id.current_mode_ct) {
             selectBtnId = R.id.current_mode_ct;
         }
@@ -107,25 +107,25 @@ public class SwitchToDialog extends Dialog implements View.OnClickListener {
         int normalTextColor = ContextCompat.getColor(getContext(), R.color.grey_color);
         int normalBgColor = ContextCompat.getColor(getContext(), R.color.white);
 
-        if (selectBtnId == R.id.smart_power_saving_ct) {
-            updateSelection(smartTxt, smartBg, R.id.smart_power_saving_ct, selectTextColor, selectBgColor);
-            updateSelection(maxtimeTxt, maxtimeBg, R.id.maximum_standby_time_ct, normalTextColor, normalBgColor);
-            updateSelection(sleepmodeTxt, sleepmodeBg, R.id.sleep_mode_ct, normalTextColor, normalBgColor);
+        if (selectBtnId == R.id.smart_ct) {
+            updateSelection(smartTxt, smartBg, R.id.smart_ct, selectTextColor, selectBgColor);
+            updateSelection(maxtimeTxt, maxtimeBg, R.id.student_age_ct, normalTextColor, normalBgColor);
+            updateSelection(sleepmodeTxt, sleepmodeBg, R.id.class_ct, normalTextColor, normalBgColor);
             updateSelection(currentTxt, currtenBg, R.id.current_mode_ct, normalTextColor, normalBgColor);
-        } else if (selectBtnId == R.id.maximum_standby_time_ct) {
-            updateSelection(smartTxt, smartBg, R.id.smart_power_saving_ct, normalTextColor, normalBgColor);
-            updateSelection(maxtimeTxt, maxtimeBg, R.id.maximum_standby_time_ct, selectTextColor, selectBgColor);
-            updateSelection(sleepmodeTxt, sleepmodeBg, R.id.sleep_mode_ct, normalTextColor, normalBgColor);
+        } else if (selectBtnId == R.id.student_age_ct) {
+            updateSelection(smartTxt, smartBg, R.id.smart_ct, normalTextColor, normalBgColor);
+            updateSelection(maxtimeTxt, maxtimeBg, R.id.student_age_ct, selectTextColor, selectBgColor);
+            updateSelection(sleepmodeTxt, sleepmodeBg, R.id.class_ct, normalTextColor, normalBgColor);
             updateSelection(currentTxt, currtenBg, R.id.current_mode_ct, normalTextColor, normalBgColor);
-        } else if (selectBtnId == R.id.sleep_mode_ct) {
-            updateSelection(smartTxt, smartBg, R.id.smart_power_saving_ct, normalTextColor, normalBgColor);
-            updateSelection(maxtimeTxt, maxtimeBg, R.id.maximum_standby_time_ct, normalTextColor, normalBgColor);
-            updateSelection(sleepmodeTxt, sleepmodeBg, R.id.sleep_mode_ct, selectTextColor, selectBgColor);
+        } else if (selectBtnId == R.id.class_ct) {
+            updateSelection(smartTxt, smartBg, R.id.smart_ct, normalTextColor, normalBgColor);
+            updateSelection(maxtimeTxt, maxtimeBg, R.id.student_age_ct, normalTextColor, normalBgColor);
+            updateSelection(sleepmodeTxt, sleepmodeBg, R.id.class_ct, selectTextColor, selectBgColor);
             updateSelection(currentTxt, currtenBg, R.id.current_mode_ct, normalTextColor, normalBgColor);
         } else if (selectBtnId == R.id.current_mode_ct) {
-            updateSelection(smartTxt, smartBg, R.id.smart_power_saving_ct, normalTextColor, normalBgColor);
-            updateSelection(maxtimeTxt, maxtimeBg, R.id.maximum_standby_time_ct, normalTextColor, normalBgColor);
-            updateSelection(sleepmodeTxt, sleepmodeBg, R.id.sleep_mode_ct, normalTextColor, normalBgColor);
+            updateSelection(smartTxt, smartBg, R.id.smart_ct, normalTextColor, normalBgColor);
+            updateSelection(maxtimeTxt, maxtimeBg, R.id.student_age_ct, normalTextColor, normalBgColor);
+            updateSelection(sleepmodeTxt, sleepmodeBg, R.id.class_ct, normalTextColor, normalBgColor);
             updateSelection(currentTxt, currtenBg, R.id.current_mode_ct, selectTextColor, selectBgColor);
         }
     }

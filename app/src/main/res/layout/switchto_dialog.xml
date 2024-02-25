@@ -7,7 +7,7 @@
     android:background="#FFFFFF">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/title_tv"
+        android:id="@+id/switch_to_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,16 +28,16 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/smart_power_saving_ct"
+            android:id="@+id/smart_ct"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="@drawable/schedule_button_backgr"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/title_tv">
+            app:layout_constraintTop_toBottomOf="@id/switch_to_tv">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/smart_power_saving_txt"
+                android:id="@+id/smart_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -52,16 +52,16 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/maximum_standby_time_ct"
+        android:id="@+id/student_age_ct"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@drawable/schedule_button_backgr"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/smart_power_saving_ct">
+        app:layout_constraintTop_toBottomOf="@id/smart_ct">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/maximum_standby_time_txt"
+            android:id="@+id/student_age_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -75,16 +75,16 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/sleep_mode_ct"
+        android:id="@+id/class_ct"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@drawable/schedule_button_backgr"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/maximum_standby_time_ct">
+        app:layout_constraintTop_toBottomOf="@id/student_age_ct">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/sleep_mode_txt"
+            android:id="@+id/class_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -104,7 +104,7 @@
         android:background="@drawable/schedule_button_backgr"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sleep_mode_ct">
+        app:layout_constraintTop_toBottomOf="@id/class_ct">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/current_mode_txt"
@@ -129,7 +129,7 @@
         android:background="@drawable/cancel_button_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/ok_ct"
+        app:layout_constraintEnd_toStartOf="@id/add_btn"
         app:layout_constraintTop_toBottomOf="@id/current_mode_ct">
         <View
             android:id="@+id/cancel_btn_v"
@@ -152,7 +152,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/ok_ct"
+        android:id="@+id/add_btn"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="16dp"
         android:layout_width="140dp"
@@ -163,7 +163,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/current_mode_ct">
         <View
-            android:id="@+id/ok_btn_v"
+            android:id="@+id/add_btn_v"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintTop_toTopOf="parent" />

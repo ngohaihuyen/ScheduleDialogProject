@@ -29,7 +29,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (v.getId() == R.id.show_dialog_btn) {
 //            showAlertDiaLog();
 
-            showCustomDialog();
+//            showCustomDialog();
+
+
         }
     }
 
