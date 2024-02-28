@@ -1,79 +1,76 @@
 package com.example.projectexample.studentstorage;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatTextView;
 
 import com.example.projectexample.R;
+import com.example.projectexample.studentstorage.model.ClassItem;
+import com.example.projectexample.studentstorage.model.Student;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class ManageStudentsActivity extends AppCompatActivity implements View.OnClickListener, AddStudentDialog.OnOkClickListener {
+public class ManageStudentsActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private List<StudentInfo> studentList;
 
-    private LinearLayout classListLayout;
-    private AppCompatButton addBtn;
+    private AppCompatButton addClass, addStudent;
+    private AppCompatTextView resultTxt;
+    private SchoolManager manager;
+
+    private OnStudentCallback callback = new OnStudentCallback() {
+        @Override
+        public void onAddStudent(Student student) {
+            manager.addStudent(student);
+
+            resultTxt.setText(manager.getArrClass().toString());
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_stored_student);
+        manager = new SchoolManager();
 
-        classListLayout = findViewById(R.id.classlist_layout);
-        addBtn = findViewById(R.id.add_btn_2);
-        addBtn.setOnClickListener(this);
+        initViews();
+        setClickEvents();
+    }
 
-        studentList = new ArrayList<>();
-        studentList.add(new StudentInfo("Class A", 2));
-        studentList.add(new StudentInfo("Class B", 7));
-        studentList.add(new StudentInfo("Class C", 10));
 
-        updateClassList();
+    private void initViews() {
+        addClass = findViewById(R.id.add_class_btn);
+        addStudent = findViewById(R.id.add_student_btn);
+        resultTxt = findViewById(R.id.result_txt);
+    }
+
+    private void setClickEvents() {
+        addClass.setOnClickListener(this);
+        addStudent.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.add_btn_2) {
-            AddStudentDialog dialog = new AddStudentDialog(this, this);
-            dialog.show();
+        if (v.getId() == R.id.add_class_btn) {
+            initClass();
+        } else if (v.getId() == R.id.add_student_btn) {
+            AddStudentDialog addStudentDialog = new AddStudentDialog(this);
+            addStudentDialog.setCallback(callback);
+            addStudentDialog.show();
         }
     }
 
-    private void updateClassList() {
 
-        for (int i = 0; i < studentList.size(); i++) {
-            StudentInfo studentInfo = studentList.get(i);
-            String className = studentInfo.getClassName();
-            int studentCount = studentInfo.getStudentNumber();
-
-            TextView textView = new TextView(this);
-            textView.setText(className + ": " + studentCount);
-            classListLayout.addView(textView);
-        }
+    void initClass() {
+        manager.addClass(new ClassItem(1, "class A", new ArrayList<>()));
+        manager.addClass(new ClassItem(2, "class B", new ArrayList<>()));
+        manager.addClass(new ClassItem(3, "class C", new ArrayList<>()));
+        manager.addClass(new ClassItem(4, "class D", new ArrayList<>()));
+        manager.addClass(new ClassItem(5, "class E", new ArrayList<>()));
     }
 
-    @Override
-    public void onOkClicked(String name, String age, String className) {
-
-        boolean found = false;
-        for (int i = 0; i < studentList.size(); i++) {
-            StudentInfo studentInfo = studentList.get(i);
-            if (studentInfo.getClassName().equals(className)) {
-                studentInfo.setStudentNumber(studentInfo.getStudentNumber() + 1);
-                found = true;
-                break;
-            }
-        }
-
-        if (!found) {
-            studentList.add(new StudentInfo(className, 1));
-        }
-        updateClassList();
-    }
 }

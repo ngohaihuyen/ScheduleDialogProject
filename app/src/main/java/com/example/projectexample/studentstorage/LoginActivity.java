@@ -19,12 +19,17 @@ public class LoginActivity extends AppCompatActivity {
 
     private AppCompatEditText usernameEdt, passwordEdt;
     private AppCompatButton loginBtn;
+    private final String appNamePref = "project_sample_pref";
+    private final String nameKey = "USERNAME";
+    private final String passwordKey = "PASSWORD";
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_stored_student);
+
+        saveLoginInfo();
 
         usernameEdt = findViewById(R.id.username_edt);
         passwordEdt = findViewById(R.id.pass_edt);
@@ -42,7 +47,6 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 if (isValidCredentials(username, password)) {
-                    saveLoginInfo(username);
                     Intent intent = new Intent(LoginActivity.this, ManageStudentsActivity.class);
                     startActivity(intent);
                     finish();
@@ -64,18 +68,24 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean isValidCredentials(String username, String password) {
+        String savedUsername = getValueOf(nameKey);
+        String savedPassword = getValueOf(passwordKey);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("LOGIN_INFOR", Context.MODE_PRIVATE);
-        String savedUsername = sharedPreferences.getString("USERNAME", "");
-        String savedPassword = sharedPreferences.getString("PASSWORD", "");
         return username.equals(savedUsername) && password.equals(savedPassword);
     }
 
-    private void saveLoginInfo(String username) {
-        SharedPreferences sharedPreferences = getSharedPreferences("LOGIN_INFOR", Context.MODE_PRIVATE);
+    private void saveLoginInfo() {
+        SharedPreferences sharedPreferences = getSharedPreferences(appNamePref, Context.MODE_PRIVATE);
         SharedPreferences.Editor shareEditor = sharedPreferences.edit();
-        shareEditor.putString("USERNAME", "HUYEN");
-        shareEditor.putString("PASSWORD", "123456");
+        shareEditor.putString("USERNAME", "abc");
+        shareEditor.putString("PASSWORD", "123");
+
         shareEditor.commit();
+    }
+
+    private String getValueOf(String key){
+        SharedPreferences sharedPreferences = getSharedPreferences(appNamePref, Context.MODE_PRIVATE);
+
+        return sharedPreferences.getString(key,"");
     }
 }

@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void showCustomDialog() {
-        RateDialog rateDialog = new RateDialog(this, R.style.DialogTheme);
+        RateDialog rateDialog = new RateDialog(this, R.style.ActivityDialogFullScreen);
 
         rateDialog.show();
     }

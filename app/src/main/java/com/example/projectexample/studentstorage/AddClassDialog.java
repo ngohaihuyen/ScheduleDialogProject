@@ -12,31 +12,33 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.projectexample.R;
+import com.example.projectexample.studentstorage.model.ClassItem;
 import com.example.projectexample.studentstorage.model.Student;
 
-public class AddStudentDialog extends Dialog {
+import java.util.ArrayList;
 
-    private OnStudentCallback callback;
+public class AddClassDialog extends Dialog {
 
+    private OnClassCallback callback;
     private EditText nameEditText, ageEditText, classEditText, idEdt;
     private Button cancelButton, addBtn;
 
-    public AddStudentDialog(@NonNull Context context) {
+
+    public AddClassDialog(@NonNull Context context) {
         super(context);
     }
 
-    public AddStudentDialog(@NonNull Context context, int themeResId) {
+    public AddClassDialog(@NonNull Context context, int themeResId) {
         super(context, R.style.ActivityDialogFullScreen);
     }
 
-    protected AddStudentDialog(@NonNull Context context, boolean cancelable, @Nullable OnCancelListener cancelListener) {
+    protected AddClassDialog(@NonNull Context context, boolean cancelable, @Nullable OnCancelListener cancelListener) {
         super(context, cancelable, cancelListener);
     }
 
-    void setCallback(OnStudentCallback event) {
+    void setCallback(OnClassCallback event) {
         callback = event;
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,8 @@ public class AddStudentDialog extends Dialog {
         setContentView(R.layout.add_student_dialog);
 
         getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+
+        //findviewbyid
 
         nameEditText = findViewById(R.id.student_name_edt);
         ageEditText = findViewById(R.id.student_age_edt);
@@ -63,29 +67,20 @@ public class AddStudentDialog extends Dialog {
             public void onClick(View v) {
                 String name = getStringOf(nameEditText);
                 int age = getNumOf(ageEditText);
-                int className = getNumOf(classEditText);
+                String className = getStringOf(classEditText);
                 int id = getNumOf(idEdt);
 
                 if (checkValidName(name)) {
-                    Student student = new Student(id, name, age, className);
+                    ArrayList<Student> students = new ArrayList<>();
+                    ClassItem classItem = new ClassItem(id, className, students);
                     if (callback != null) {
-                        callback.onAddStudent(student);
+                        callback.onAddClass(classItem);
                     }
 
                     dismiss();
                 } else {
                     showErrorDialog("Vui lòng nhập đầy đủ và hợp lệ thông tin");
                 }
-
-                //re-check conditions to add student;
-
-                Student student = new Student(id, name, age, className);
-                if (callback != null) {
-                    callback.onAddStudent(student);
-                }
-
-                dismiss();
-
             }
 
             private String getStringOf(EditText edt) {
@@ -107,9 +102,9 @@ public class AddStudentDialog extends Dialog {
                 return true;
             }
 
-
             private void showErrorDialog(String message) {
+                // show error dialog
             }
-        })
-    ;}
+        });
+    }
 }
