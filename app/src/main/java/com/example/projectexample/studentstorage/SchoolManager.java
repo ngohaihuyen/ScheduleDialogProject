@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 public class SchoolManager {
     private ArrayList<ClassItem> arrClass;
-
     public SchoolManager() {
         this.arrClass = new ArrayList<>();
     }
@@ -33,7 +32,11 @@ public class SchoolManager {
     }
 
     Boolean addClass(ClassItem clazz) {
-        if (arrClass.size() > 10) return false;
+        if (clazz == null){
+            return false;
+        }
+        if (arrClass.size() > 10)
+            return false;
         if (!arrClass.contains(clazz)) {
             arrClass.add(clazz);
             return true;
@@ -42,7 +45,17 @@ public class SchoolManager {
     }
 
     Boolean deleteStudent(Student student) {
-        return false;
+        if (student == null) {
+            return false;
+        }
+        ClassItem classItem = findClassById(student.getClassID());
+        if (classItem == null){
+            return false;
+        }
+
+        ArrayList<Student> students = classItem.getStudents();
+        boolean removed = students.remove(student);
+        return removed;
     }
 
     ClassItem findClassById(int classId) {

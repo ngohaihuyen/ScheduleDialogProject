@@ -20,8 +20,8 @@ import java.util.ArrayList;
 public class AddClassDialog extends Dialog {
 
     private OnClassCallback callback;
-    private EditText nameEditText, ageEditText, classEditText, idEdt;
-    private Button cancelButton, addBtn;
+    private EditText nameEditText, idEdt;
+    private Button cancelBtn, addBtn;
 
 
     public AddClassDialog(@NonNull Context context) {
@@ -43,20 +43,16 @@ public class AddClassDialog extends Dialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_student_dialog);
+        setContentView(R.layout.add_class_dialog);
 
         getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
 
-        //findviewbyid
-
-        nameEditText = findViewById(R.id.student_name_edt);
-        ageEditText = findViewById(R.id.student_age_edt);
-        classEditText = findViewById(R.id.class_edt);
-        idEdt = findViewById(R.id.id_edt);
-        cancelButton = findViewById(R.id.cancel_btn);
+        nameEditText = findViewById(R.id.class_name_edt);
+        idEdt = findViewById(R.id.id_class_edt);
+        cancelBtn = findViewById(R.id.cancel_btn);
         addBtn = findViewById(R.id.add_btn);
 
-        cancelButton.setOnClickListener(new View.OnClickListener() {
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dismiss();
@@ -66,22 +62,20 @@ public class AddClassDialog extends Dialog {
             @Override
             public void onClick(View v) {
                 String name = getStringOf(nameEditText);
-                int age = getNumOf(ageEditText);
-                String className = getStringOf(classEditText);
                 int id = getNumOf(idEdt);
 
-                if (checkValidName(name)) {
-                    ArrayList<Student> students = new ArrayList<>();
-                    ClassItem classItem = new ClassItem(id, className, students);
+                if (name.isEmpty()) {
+                    showErrorDialog("Vui lòng nhập đầy đủ thông tin");
+                } else {
+                    ClassItem classItem = new ClassItem(id, name, new ArrayList<>());
                     if (callback != null) {
                         callback.onAddClass(classItem);
                     }
-
                     dismiss();
-                } else {
-                    showErrorDialog("Vui lòng nhập đầy đủ và hợp lệ thông tin");
                 }
             }
+        });
+    }
 
             private String getStringOf(EditText edt) {
                 return edt.getText().toString().trim();
@@ -103,8 +97,6 @@ public class AddClassDialog extends Dialog {
             }
 
             private void showErrorDialog(String message) {
-                // show error dialog
             }
-        });
-    }
 }
+
