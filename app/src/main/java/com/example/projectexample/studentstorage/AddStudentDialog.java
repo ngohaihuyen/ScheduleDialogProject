@@ -96,7 +96,23 @@ public class AddStudentDialog extends Dialog {
 
             private int getNumOf(EditText edt) {
                 String value = edt.getText().toString();
-                return Integer.parseInt(value);
+                if (isInteger(value)) {
+                    return Integer.parseInt(value);
+                } else {
+                    return 0;
+                }
+
+            }
+            private boolean isInteger(String str) {
+                if (str == null || str.isEmpty()) {
+                    return false;
+                }
+                for (int i = 0; i < str.length(); i++) {
+                    if (!Character.isDigit(str.charAt(i))) {
+                        return false;
+                    }
+                }
+                return true;
             }
 
             private boolean checkValidName(String name) {
