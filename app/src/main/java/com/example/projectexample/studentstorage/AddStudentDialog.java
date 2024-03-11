@@ -37,7 +37,6 @@ public class AddStudentDialog extends Dialog {
         callback = event;
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

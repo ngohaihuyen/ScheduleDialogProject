@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/add_story_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="add story"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/add_topic_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="add topic"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/update_str_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="update story"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/delete_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="add story"/>
+
+
+</LinearLayout>
