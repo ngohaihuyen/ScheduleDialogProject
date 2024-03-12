@@ -75,7 +75,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/class_ct"
+        android:id="@+id/name_story_ct"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@drawable/schedule_button_backgr"
@@ -84,7 +84,7 @@
         app:layout_constraintTop_toBottomOf="@id/student_age_ct">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/class_tv"
+            android:id="@+id/name_story_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -104,7 +104,7 @@
         android:background="@drawable/schedule_button_backgr"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/class_ct">
+        app:layout_constraintTop_toBottomOf="@id/name_story_ct">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/current_mode_txt"

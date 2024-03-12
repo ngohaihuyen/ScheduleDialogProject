@@ -63,7 +63,7 @@ public class SwitchToDialog extends Dialog implements View.OnClickListener {
     private void initBtn() {
         smartBg = findViewById(R.id.smart_ct);
         maxtimeBg = findViewById(R.id.student_age_ct);
-        sleepmodeBg = findViewById(R.id.class_ct);
+        sleepmodeBg = findViewById(R.id.name_story_ct);
         currtenBg = findViewById(R.id.current_mode_ct);
 
         smartBg.setOnClickListener(this);
@@ -75,7 +75,7 @@ public class SwitchToDialog extends Dialog implements View.OnClickListener {
     private void initTxt() {
         smartTxt = findViewById(R.id.smart_tv);
         maxtimeTxt = findViewById(R.id.student_age_tv);
-        sleepmodeTxt = findViewById(R.id.class_tv);
+        sleepmodeTxt = findViewById(R.id.name_story_tv);
         currentTxt = findViewById(R.id.current_mode_txt);
 
         smartTxt.setOnClickListener(this);
@@ -92,8 +92,8 @@ public class SwitchToDialog extends Dialog implements View.OnClickListener {
             selectBtnId = R.id.smart_ct;
         } else if (v.getId() == R.id.student_age_ct) {
             selectBtnId = R.id.student_age_ct;
-        } else if (v.getId()== R.id.class_ct) {
-            selectBtnId = R.id.class_ct;
+        } else if (v.getId()== R.id.name_story_ct) {
+            selectBtnId = R.id.name_story_ct;
         } else if (v.getId() == R.id.current_mode_ct) {
             selectBtnId = R.id.current_mode_ct;
         }
@@ -110,22 +110,22 @@ public class SwitchToDialog extends Dialog implements View.OnClickListener {
         if (selectBtnId == R.id.smart_ct) {
             updateSelection(smartTxt, smartBg, R.id.smart_ct, selectTextColor, selectBgColor);
             updateSelection(maxtimeTxt, maxtimeBg, R.id.student_age_ct, normalTextColor, normalBgColor);
-            updateSelection(sleepmodeTxt, sleepmodeBg, R.id.class_ct, normalTextColor, normalBgColor);
+            updateSelection(sleepmodeTxt, sleepmodeBg, R.id.name_story_ct, normalTextColor, normalBgColor);
             updateSelection(currentTxt, currtenBg, R.id.current_mode_ct, normalTextColor, normalBgColor);
         } else if (selectBtnId == R.id.student_age_ct) {
             updateSelection(smartTxt, smartBg, R.id.smart_ct, normalTextColor, normalBgColor);
             updateSelection(maxtimeTxt, maxtimeBg, R.id.student_age_ct, selectTextColor, selectBgColor);
-            updateSelection(sleepmodeTxt, sleepmodeBg, R.id.class_ct, normalTextColor, normalBgColor);
+            updateSelection(sleepmodeTxt, sleepmodeBg, R.id.name_story_ct, normalTextColor, normalBgColor);
             updateSelection(currentTxt, currtenBg, R.id.current_mode_ct, normalTextColor, normalBgColor);
-        } else if (selectBtnId == R.id.class_ct) {
+        } else if (selectBtnId == R.id.name_story_ct) {
             updateSelection(smartTxt, smartBg, R.id.smart_ct, normalTextColor, normalBgColor);
             updateSelection(maxtimeTxt, maxtimeBg, R.id.student_age_ct, normalTextColor, normalBgColor);
-            updateSelection(sleepmodeTxt, sleepmodeBg, R.id.class_ct, selectTextColor, selectBgColor);
+            updateSelection(sleepmodeTxt, sleepmodeBg, R.id.name_story_ct, selectTextColor, selectBgColor);
             updateSelection(currentTxt, currtenBg, R.id.current_mode_ct, normalTextColor, normalBgColor);
         } else if (selectBtnId == R.id.current_mode_ct) {
             updateSelection(smartTxt, smartBg, R.id.smart_ct, normalTextColor, normalBgColor);
             updateSelection(maxtimeTxt, maxtimeBg, R.id.student_age_ct, normalTextColor, normalBgColor);
-            updateSelection(sleepmodeTxt, sleepmodeBg, R.id.class_ct, normalTextColor, normalBgColor);
+            updateSelection(sleepmodeTxt, sleepmodeBg, R.id.name_story_ct, normalTextColor, normalBgColor);
             updateSelection(currentTxt, currtenBg, R.id.current_mode_ct, selectTextColor, selectBgColor);
         }
     }

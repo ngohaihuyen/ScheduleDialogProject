@@ -32,10 +32,10 @@ public class LibraryManager {
     }
 
     //thêm truyện vafo cđề
-    public boolean addStoryToTopic(int topicId, Story story) {
-        Category topic = searchTopicById(topicId);
-        if (topic != null) {
-            return topic.addStory(story);
+    public boolean addStoryToCategory(Story story) {
+        Category category = searchCategoryById(story.getIdStory());
+        if (category != null) {
+            return category.addStory(story);
         }
         return false;
     }
@@ -58,7 +58,7 @@ public class LibraryManager {
 
 
     // tìm kiếm truyện (idd)
-    public Story findStoryById(int storyId) {
+    public Story searchStoryById(int storyId) {
         for (int i = 0; i < categories.size(); i++) {
             Category topic = categories.get(i);
             List<Story> stories = topic.getStories();
@@ -74,7 +74,7 @@ public class LibraryManager {
     }
 
     // tìm kiếm cđề (id)
-    public Category searchTopicById(int topicId) {
+    public Category searchCategoryById(int topicId) {
         for (int i = 0; i < categories.size(); i++) {
             Category topicItem = categories.get(i);
             if (categories.get(i).getId() == topicId) {

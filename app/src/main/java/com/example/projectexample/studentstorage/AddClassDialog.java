@@ -13,7 +13,6 @@ import androidx.annotation.Nullable;
 
 import com.example.projectexample.R;
 import com.example.projectexample.studentstorage.model.ClassItem;
-import com.example.projectexample.studentstorage.model.Student;
 
 import java.util.ArrayList;
 
@@ -47,8 +46,8 @@ public class AddClassDialog extends Dialog {
 
         getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
 
-        nameEditText = findViewById(R.id.class_name_edt);
-        idEdt = findViewById(R.id.id_class_edt);
+        nameEditText = findViewById(R.id.name_category_edt);
+        idEdt = findViewById(R.id.id_category_edt);
         cancelBtn = findViewById(R.id.cancel_btn);
         addBtn = findViewById(R.id.add_btn);
 

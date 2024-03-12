@@ -46,7 +46,7 @@ public class AddStudentDialog extends Dialog {
 
         nameEditText = findViewById(R.id.student_name_edt);
         ageEditText = findViewById(R.id.student_age_edt);
-        classEditText = findViewById(R.id.id_class_edt);
+        classEditText = findViewById(R.id.id_category_edt);
         idEdt = findViewById(R.id.id_edt);
         cancelButton = findViewById(R.id.cancel_btn);
         addBtn = findViewById(R.id.add_btn);

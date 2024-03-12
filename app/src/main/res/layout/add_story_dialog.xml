@@ -14,9 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:fontFamily="sans-serif-medium"
-        android:text="Add student"
+        android:text="Add story"
         android:textColor="@color/black"
-        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,30 +32,29 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/id_story_ct"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/schedule_button_backgr"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/add_tv">
 
-        <androidx.appcompat.widget.AppCompatEditText
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/name_category_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name:"
+            android:text="ID:"
             android:textColor="@color/black"
-            android:textSize="16dp"
+            android:inputType="number"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="TouchTargetSizeCheck" />
-
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/student_name_edt"
+            android:id="@+id/id_story_edt"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="enter student name"
+            android:hint="enter id story"
             android:textColor="@color/black"
             android:textColorHint="#828282"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -66,40 +64,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/student_age_ct"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@drawable/schedule_button_backgr"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/id_story_ct">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/student_age_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Student age: "
-            android:textColor="@color/black"
-            android:textSize="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/student_age_edt"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="enter the student age"
-            android:inputType="number"
-            android:textColor="@color/black"
-            android:textColorHint="#828282"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/student_age_tv"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/name_story_ct"
@@ -108,25 +73,24 @@
         android:background="@drawable/schedule_button_backgr"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/student_age_ct">
+        app:layout_constraintTop_toBottomOf="@id/id_story_ct">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/name_story_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Class"
+            android:text="Name"
             android:textColor="@color/black"
-            android:textSize="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/id_category_edt"
+            android:id="@+id/name_story_edt"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:hint="enter the class"
+            android:hint="enter story name"
             android:textColor="@color/black"
             android:textColorHint="#828282"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -135,10 +99,11 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/id_ct"
+        android:id="@+id/content_story_ct"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@drawable/schedule_button_backgr"
@@ -147,32 +112,32 @@
         app:layout_constraintTop_toBottomOf="@id/name_story_ct">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/id_txt"
+            android:id="@+id/content_story_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ID"
+            android:text="Content"
             android:textColor="@color/black"
-            android:textSize="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/id_edt"
+            android:id="@+id/content_story_edt"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:hint="enter the student id"
-            android:inputType="number"
+            android:hint="enter story content"
             android:textColor="@color/black"
             android:textColorHint="#828282"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/id_txt"
+            app:layout_constraintStart_toEndOf="@id/content_story_tv"
             app:layout_constraintTop_toTopOf="parent" />
 
 
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -180,7 +145,7 @@
         android:layout_marginVertical="16dp"
         android:gravity="end"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/id_ct">
+        app:layout_constraintTop_toBottomOf="@id/content_story_ct">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/cancel_btn"
