@@ -24,8 +24,13 @@ public class LibraryManageActivity extends AppCompatActivity implements View.OnC
     private OnStoryCallback storyCallback = new OnStoryCallback() {
         @Override
         public void onAddStory(Story storyItem) {
-            manager.addStoryToCategory(storyItem);
-            resultTxt.setText(manager.toString());
+           Boolean isSuccess =  manager.addStoryToCategory(storyItem);
+           if(isSuccess){
+               resultTxt.setText(manager.toString());
+           }else {
+               resultTxt.setText("add to list get wrong");
+           }
+
 
         }
     };

@@ -20,9 +20,12 @@ public class LibraryManager {
     }
 
     //xoá cđề
-    public boolean removeCategory(int idCategory){
+    public boolean removeCategory(int idCategory) {
         for (int i = 0; i < categories.size(); i++) {
-            if(categories.get(i).getId() == idCategory) {
+            Category item = categories.get(i);
+            int itemId = item.getId();
+
+            if (itemId == idCategory) {
                 categories.remove(i);
                 return true;
             }
@@ -39,7 +42,6 @@ public class LibraryManager {
         }
         return false;
     }
-
 
 
     //  xóa truyện (id)
@@ -85,14 +87,16 @@ public class LibraryManager {
     }
 
     //tìm kiếm truyện theo tên
-    public List<Story> searchStoriesByName(String name){
+    public List<Story> searchStoriesByName(String name) {
         List<Story> foundStory = new ArrayList<>();
         for (int i = 0; i < categories.size(); i++) {
             Category category = categories.get(i);
             List<Story> stories = category.getStories();
+
             for (int j = 0; j < stories.size(); j++) {
                 Story story = stories.get(j);
-                if(story.getName().equals(name)){
+
+                if (story.getName().equals(name)) {
                     foundStory.add(story);
                 }
             }
@@ -100,12 +104,24 @@ public class LibraryManager {
         return foundStory;
     }
 
-    //tiìm kiếm cđề theo tên
-    public List<Category> searchCategoryByName(String name){
-        List<Category> foundCategory = new ArrayList<>();
+    public Story searchStoryByName(String name) {
         for (int i = 0; i < categories.size(); i++) {
             Category category = categories.get(i);
-            if(category.getName().equals(name)){
+            Story result = category.searchStoryByName(name);
+            return result;
+        }
+        return null;
+    }
+
+    //tiìm kiếm cđề theo tên
+    public List<Category> searchCategoryByName(String name) {
+        List<Category> foundCategory = new ArrayList<>();
+        for (int i = 0; i < categories.size(); i++) {
+
+            Category category = categories.get(i);
+            String categoryName = category.getName();
+
+            if (categoryName.equals(name)) {
                 foundCategory.add(category);
             }
         }

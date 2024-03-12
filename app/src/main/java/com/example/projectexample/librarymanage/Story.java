@@ -39,8 +39,7 @@ public class Story {
             return false;
         }
         if (!episodeList.contains(episode)) {
-            episodeList.add(episode);
-            return true;
+            return episodeList.add(episode);
         }
         return false;
     }
@@ -48,8 +47,9 @@ public class Story {
     public boolean deleteEpisode(int idEp) {
         for (int i = 0; i < episodeList.size(); i++) {
             if (episodeList.get(i).getIdEp() == idEp) {
-                episodeList.remove(i);
-                return true;
+                Episode removedItem= episodeList.remove(i);
+
+                return removedItem!=null;
             }
         }
         return false;

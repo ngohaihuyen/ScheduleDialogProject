@@ -47,7 +47,7 @@ public class Category {
         return false;
     }
 
-    public boolean deleteStory(int idStory){
+    public boolean deleteStory(int idStory) {
         for (int i = 0; i < stories.size(); i++) {
             if (stories.get(i).getIdStory() == idStory) {
                 stories.remove(i);
@@ -57,12 +57,23 @@ public class Category {
         return false;
     }
 
-    public void updateNewContent(List<Story> newStories){
-        if (newStories == null){
+    public void updateNewContent(List<Story> newStories) {
+        if (newStories == null) {
             return;
         }
         stories.clear();
         stories.addAll(newStories);
+    }
+
+    public Story searchStoryByName(String name) {
+        List<Story> stories = getStories();
+        for (int j = 0; j < stories.size(); j++) {
+            Story story = stories.get(j);
+            if (story.getName().equals(name)) {
+                return story;
+            }
+        }
+        return null;
     }
 
     @Override
