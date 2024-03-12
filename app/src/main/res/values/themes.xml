@@ -7,14 +7,15 @@
 
     <style name="Theme.ProjectExample" parent="Base.Theme.ProjectExample" />
 
-    <style name="DialogTheme" parent="android:Theme.Material.Dialog.NoActionBar">
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">fill_parent</item>
-
-        <!-- No backgrounds, titles or window float -->
-        <item name="android:windowNoTitle">false</item>
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:windowIsFloating">false</item>
+    <style name="ActivityDialogFullScreen" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorControlHighlight">@color/white</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowActionBar">false</item>
     </style>
 
 

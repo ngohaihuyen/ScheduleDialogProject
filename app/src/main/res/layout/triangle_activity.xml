@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:gravity="center_vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Diem A"
+            android:layout_marginEnd="8dp"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/ax_edt"
+            android:layout_width="0dp"
+            android:inputType="numberDecimal"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:hint="y" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/ay_edt"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:hint="y" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:gravity="center_vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Diem B"
+            android:layout_marginEnd="8dp"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/bx_edt"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:hint="x" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/by_edt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="y" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Diem C"
+            android:layout_marginEnd="8dp"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/cx_edt"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:hint="x" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/cy_edt"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:hint="y" />
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/result_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ket qua"
+        android:textSize="16sp"
+        android:textColorHint="@android:color/darker_gray"
+        android:gravity="center"
+        android:layout_margin="16dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/perimeter_btn"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="CHU VI" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/area_btn"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="DIEN TICH" />
+    </LinearLayout>
+
+</LinearLayout>

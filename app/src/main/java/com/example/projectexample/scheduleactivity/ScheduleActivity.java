@@ -33,7 +33,7 @@ public class ScheduleActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void showCustomDialog() {
-        SwitchToDialog switchToDialog = new SwitchToDialog(this, R.style.DialogTheme);
+        SwitchToDialog switchToDialog = new SwitchToDialog(this, R.style.ActivityDialogFullScreen);
         switchToDialog.show();
     }
 

@@ -29,12 +29,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (v.getId() == R.id.show_dialog_btn) {
 //            showAlertDiaLog();
 
-            showCustomDialog();
+//            showCustomDialog();
+
+
         }
     }
 
     private void showCustomDialog() {
-        RateDialog rateDialog = new RateDialog(this, R.style.DialogTheme);
+        RateDialog rateDialog = new RateDialog(this, R.style.ActivityDialogFullScreen);
 
         rateDialog.show();
     }
