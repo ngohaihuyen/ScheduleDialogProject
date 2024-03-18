@@ -77,6 +77,7 @@ public class FileSampleActivity extends AppCompatActivity {
 
             File file = getNewFile(fileName);
             FileOutputStream outputStream = new FileOutputStream(file);
+
             outputStream.write(content.getBytes());
 
             outputStream.close();

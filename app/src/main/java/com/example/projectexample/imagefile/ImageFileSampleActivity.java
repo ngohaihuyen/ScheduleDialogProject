@@ -3,6 +3,8 @@ package com.example.projectexample.imagefile;
 import static android.os.Build.VERSION.SDK_INT;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -28,7 +30,8 @@ public class ImageFileSampleActivity extends AppCompatActivity {
     AppCompatTextView resultTxt;
     String TAG = "ManhNQ";
 
-    String fileName ="Silicon_valley_tilte.png";
+    String fileName = "Silicon_valley_tilte.png";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,18 +49,18 @@ public class ImageFileSampleActivity extends AppCompatActivity {
         requestBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                requestPermission();
+                requestPermissions();
             }
         });
 
         readFileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                byte[] imageData = readFile();
-                if (imageData != null) {
-                    Log.d(TAG, "Image read successfully");
+                byte[] data = readFile();
+                if (data != null) {
+                    Log.d(TAG, "read file successful");
                 } else {
-                    Log.d(TAG, "read image is failed");
+                    Log.d(TAG, "read file í failed");
                 }
             }
         });
@@ -65,62 +68,57 @@ public class ImageFileSampleActivity extends AppCompatActivity {
         writeFileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                byte[] imageData = getImageData();
-
-                if (imageData != null) {
-                    writeFile(imageData);
-                } else {
-                    Log.d(TAG, "Failed to write image");
-                }
+                writeFile();
             }
         });
     }
 
+
     private byte[] readFile() {
-        try {
-            File file = getExistingFile(fileName);
-            if (file != null) {
+        File file = getExistingFile();
+
+        if (file != null) {
+
+            try {
                 FileInputStream fileInputStream = new FileInputStream(file);
-                byte[] imageData = new byte[(int) file.length()];
-                fileInputStream.read(imageData);
+                byte[] data = new byte[(int) file.length()];
+                fileInputStream.read(data);
                 fileInputStream.close();
-                return imageData;
-            } else {
-                Log.d(TAG, "File not found");
+                return data;
+            } catch (IOException e) {
+                Log.e(TAG, "Error in reading file");
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
         return null;
     }
 
-    private void writeFile(byte[] imageData) {
+    private void writeFile() {
+        File file = getExistingFile();
+        if (file != null) {
+            try {
+                FileOutputStream fileOutputStream = new FileOutputStream(file);
+                fileOutputStream.close();
+                Log.d(TAG, "Write file successful");
+            } catch (IOException e) {
+                Log.e(TAG, "Error writing file");
+            }
+        }
+    }
+
+    private File getExistingFile() {
         try {
-            File file = getExistingFile(fileName);
-            if (file != null) {
-                FileOutputStream outputStream = new FileOutputStream(file);
-                outputStream.write(imageData);
-                outputStream.close();
-                Log.d(TAG, "Image saved successfully");
-            } else {
-                Log.d(TAG, "File not found");
+            String filePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/" + fileName;
+            File existingFile = new File(filePath);
+            if (existingFile.exists()) {
+                return existingFile;
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-
-    private File getExistingFile(String fileName) {
-        String filePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/" + fileName;
-        File existingFile = new File(filePath);
-        if (existingFile.exists()) {
-            return existingFile;
         }
         return null;
     }
 
-
-    private void requestPermission() {
+    private void requestPermissions() {
         if (SDK_INT >= Build.VERSION_CODES.R) {
             try {
                 Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
@@ -135,7 +133,21 @@ public class ImageFileSampleActivity extends AppCompatActivity {
         }
     }
 
-    private byte[] getImageData() {
-        return null;
+
+    public void download(String url){
+        //download to external storage
+        //connect to url
+        //read InputStream
+
+        //get file to write
+        //write to file
+
+        //close all stream & url
+
     }
+
+    public void showImageFromPath(String path){
+
+    }
+
 }
