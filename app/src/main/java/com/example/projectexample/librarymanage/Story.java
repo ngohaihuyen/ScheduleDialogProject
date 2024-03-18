@@ -46,7 +46,11 @@ public class Story {
 
     public boolean deleteEpisode(int idEp) {
         for (int i = 0; i < episodeList.size(); i++) {
-            if (episodeList.get(i).getIdEp() == idEp) {
+
+            Episode episodeItem = episodeList.get(i);
+            int itemId = episodeItem.getIdEp();
+            if (itemId == idEp) {
+
                 Episode removedItem= episodeList.remove(i);
 
                 return removedItem!=null;

@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+
+    <uses-permission
+        android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,7 +18,7 @@
         android:theme="@style/Theme.ProjectExample"
         tools:targetApi="31">
         <activity
-            android:name=".AntiVirrusActivity.AntiVirusActivity"
+            android:name=".filesample.FileSampleActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,11 +26,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".studentstorage.ManageStudentsActivity"/>
+        <activity android:name=".studentstorage.ManageStudentsActivity" />
 
-<!--
-        <activity android:name=".MainActivity"/>
--->
+        <!--
+                <activity android:name=".MainActivity"/>
+        -->
     </application>
 
 </manifest>

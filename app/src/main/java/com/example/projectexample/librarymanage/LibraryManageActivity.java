@@ -1,6 +1,7 @@
 package com.example.projectexample.librarymanage;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -20,6 +21,8 @@ public class LibraryManageActivity extends AppCompatActivity implements View.OnC
 
     private AppCompatTextView resultTxt;
     private LibraryManager manager;
+    String TAG = "ManhNQ";
+
 
     private OnStoryCallback storyCallback = new OnStoryCallback() {
         @Override
@@ -29,9 +32,8 @@ public class LibraryManageActivity extends AppCompatActivity implements View.OnC
                resultTxt.setText(manager.toString());
            }else {
                resultTxt.setText("add to list get wrong");
+               Log.d(TAG, "onAddStory: ");
            }
-
-
         }
     };
 
@@ -40,6 +42,7 @@ public class LibraryManageActivity extends AppCompatActivity implements View.OnC
         public void onAddCategoryCallback(Category categoryItem) {
             manager.addCategory(categoryItem);
             resultTxt.setText(manager.toString());
+            Log.d(TAG, "onAddCategoryCallback:");
         }
     };
 
@@ -52,6 +55,8 @@ public class LibraryManageActivity extends AppCompatActivity implements View.OnC
 
         initViews();
         setClickEvents();
+
+        Log.d(TAG, "onCreate: ");
     }
 
 
@@ -61,6 +66,7 @@ public class LibraryManageActivity extends AppCompatActivity implements View.OnC
         updateBtn = findViewById(R.id.update_str_btn);
         deleteBtn = findViewById(R.id.delete_btn);
         resultTxt = findViewById(R.id.result_txt);
+
     }
 
     private void setClickEvents() {
@@ -81,6 +87,7 @@ public class LibraryManageActivity extends AppCompatActivity implements View.OnC
             addCategoryDialog.setCategoryCallback(categoryCallback);
             addCategoryDialog.show();
 
+            Log.d(TAG, "onClick: ");
         }
     }
 

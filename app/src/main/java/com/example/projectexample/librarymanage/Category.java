@@ -8,7 +8,7 @@ public class Category {
     private String name;
     private List<Story> stories;
 
-    public Category(int id, String name, String content) {
+    public Category(int id, String name) {
         this.id = id;
         this.name = name;
         this.stories = new ArrayList<>();
@@ -49,7 +49,10 @@ public class Category {
 
     public boolean deleteStory(int idStory) {
         for (int i = 0; i < stories.size(); i++) {
-            if (stories.get(i).getIdStory() == idStory) {
+
+            Story storyItem = stories.get(i);
+            int itemId = storyItem.getIdStory();
+            if (itemId == idStory) {
                 stories.remove(i);
                 return true;
             }
@@ -68,7 +71,9 @@ public class Category {
     public Story searchStoryByName(String name) {
         List<Story> stories = getStories();
         for (int j = 0; j < stories.size(); j++) {
+
             Story story = stories.get(j);
+
             if (story.getName().equals(name)) {
                 return story;
             }

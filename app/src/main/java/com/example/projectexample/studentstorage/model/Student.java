@@ -15,6 +15,9 @@ public class Student {
         this.classID = classID;
     }
 
+    public Student(int id, String name) {
+    }
+
     public int getStudentId() {
         return studentId;
     }

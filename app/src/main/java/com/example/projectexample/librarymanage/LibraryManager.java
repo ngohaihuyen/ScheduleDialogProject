@@ -22,6 +22,7 @@ public class LibraryManager {
     //xoá cđề
     public boolean removeCategory(int idCategory) {
         for (int i = 0; i < categories.size(); i++) {
+
             Category item = categories.get(i);
             int itemId = item.getId();
 
@@ -40,6 +41,11 @@ public class LibraryManager {
         if (category != null) {
             return category.addStory(story);
         }
+
+        if (!categories.contains(category)) {
+            categories.add(category);
+            return true;
+        }
         return false;
     }
 
@@ -48,8 +54,13 @@ public class LibraryManager {
     public boolean removeStory(int storyId) {
         for (int i = 0; i < categories.size(); i++) {
             List<Story> stories = categories.get(i).getStories();
+
             for (int j = 0; j < stories.size(); j++) {
-                if (stories.get(j).getIdStory() == storyId) {
+
+                Story storyItem = stories.get(i);
+                int itemId = storyItem.getIdStory();
+
+                if (itemId == storyId) {
                     stories.remove(j);
                     return true;
                 }
@@ -62,11 +73,15 @@ public class LibraryManager {
     // tìm kiếm truyện (idd)
     public Story searchStoryById(int storyId) {
         for (int i = 0; i < categories.size(); i++) {
-            Category topic = categories.get(i);
-            List<Story> stories = topic.getStories();
+
+            Category category = categories.get(i);
+            List<Story> stories = category.getStories();
+
             for (int j = 0; j < stories.size(); j++) {
+
                 Story storyItem = stories.get(j);
-                if (storyItem.getIdStory() == storyId) {
+                int itemId = storyItem.getIdStory();
+                if (itemId == storyId) {
                     return storyItem;
                 }
             }
@@ -78,9 +93,10 @@ public class LibraryManager {
     // tìm kiếm cđề (id)
     public Category searchCategoryById(int topicId) {
         for (int i = 0; i < categories.size(); i++) {
-            Category topicItem = categories.get(i);
-            if (categories.get(i).getId() == topicId) {
-                return topicItem;
+            Category categoryItem = categories.get(i);
+            int itemId = categoryItem.getId();
+            if (itemId == topicId) {
+                return categoryItem;
             }
         }
         return null;
@@ -106,8 +122,10 @@ public class LibraryManager {
 
     public Story searchStoryByName(String name) {
         for (int i = 0; i < categories.size(); i++) {
+
             Category category = categories.get(i);
             Story result = category.searchStoryByName(name);
+
             return result;
         }
         return null;
