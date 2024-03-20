@@ -34,7 +34,7 @@ public class SharedPreferencesActivity extends AppCompatActivity implements View
     private void initViews() {
         saveBtn = findViewById(R.id.save_btn);
         readBtn = findViewById(R.id.read_btn);
-        resultTxt = findViewById(R.id.result_txt);
+        resultTxt = findViewById(R.id.result_img);
     }
 
     @Override

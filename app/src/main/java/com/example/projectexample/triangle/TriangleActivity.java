@@ -1,12 +1,9 @@
 package com.example.projectexample.triangle;
 
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -131,7 +128,7 @@ public class TriangleActivity extends AppCompatActivity implements View.OnClickL
         cyEdt = findViewById(R.id.cy_edt);
         perimeterBtn = findViewById(R.id.perimeter_btn);
         areaBtn = findViewById(R.id.area_btn);
-        resultTxt = findViewById(R.id.result_txt);
+        resultTxt = findViewById(R.id.result_img);
 
     }
 

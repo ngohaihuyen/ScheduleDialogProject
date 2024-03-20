@@ -2,7 +2,6 @@ package com.example.projectexample.filesample;
 
 import static android.os.Build.VERSION.SDK_INT;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -10,7 +9,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.Settings;
 import android.util.Log;
-import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,7 +22,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.util.List;
 
 public class FileSampleActivity extends AppCompatActivity {
     AppCompatButton requestBtn, createFileBtn, readFileBtn, writeFileBtn;
@@ -46,7 +43,7 @@ public class FileSampleActivity extends AppCompatActivity {
         createFileBtn = findViewById(R.id.create_file_btn);
         readFileBtn = findViewById(R.id.read_file_btn);
         writeFileBtn = findViewById(R.id.write_file_btn);
-        resultTxt = findViewById(R.id.result_txt);
+        resultTxt = findViewById(R.id.result_img);
 
         requestBtn.setOnClickListener(v -> {
             requestPermission();

@@ -31,7 +31,7 @@
         android:text="delete"/>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/result_txt"
+        android:id="@+id/result_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="RESULT"

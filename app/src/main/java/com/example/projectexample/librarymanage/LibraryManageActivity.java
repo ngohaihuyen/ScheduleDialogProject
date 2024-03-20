@@ -65,7 +65,7 @@ public class LibraryManageActivity extends AppCompatActivity implements View.OnC
         addCategoryBtn = findViewById(R.id.add_category_btn);
         updateBtn = findViewById(R.id.update_str_btn);
         deleteBtn = findViewById(R.id.delete_btn);
-        resultTxt = findViewById(R.id.result_txt);
+        resultTxt = findViewById(R.id.result_img);
 
     }
 

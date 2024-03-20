@@ -50,7 +50,7 @@ public class ManageStudentsActivity extends AppCompatActivity implements View.On
     private void initViews() {
         addClass = findViewById(R.id.add_class_btn);
         addStudent = findViewById(R.id.add_student_btn);
-        resultTxt = findViewById(R.id.result_txt);
+        resultTxt = findViewById(R.id.result_img);
     }
 
     private void setClickEvents() {
