@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    >
 
 
     <uses-permission
         android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
+
+
 
     <application
         android:allowBackup="true"
@@ -18,7 +21,7 @@
         android:theme="@style/Theme.ProjectExample"
         tools:targetApi="31">
         <activity
-            android:name=".imagefile.ImageFileSampleActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +29,20 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".animation.AnimationActivity" />
+        <activity android:name=".AntiVirrusActivity.AntiVirusActivity" />
+        <activity android:name=".filesample.FileSampleActivity" />
+        <activity android:name=".imagefile.ImageFileSampleActivity" />
+        <activity android:name=".librarymanage.LibraryManageActivity" />
+        <activity android:name=".scheduleactivity.ScheduleActivity" />
+        <activity android:name=".shared.SharedPreferencesActivity" />
         <activity android:name=".studentstorage.ManageStudentsActivity" />
+        <activity android:name=".threadsample.ThreadActivitySample" />
+        <activity android:name=".triangle.TriangleActivity" />
+
+
+
+
 
         <!--
                 <activity android:name=".MainActivity"/>

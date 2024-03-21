@@ -1,19 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:gravity="center">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/show_dialog_btn"
+    <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Show dialog"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="CHOOSE YOUR PLACE"
+        android:layout_marginBottom="10dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/anim_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Animation " />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/antivirus_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="anti virus " />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/file_sample_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="file sample " />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/image_file_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="image file" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/library_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="library manage Activity" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/schedule_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="schedule activity" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/shared_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="shared preference" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/student_storage_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="student storage" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/thread_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="thread sample" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/triangle_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="triangle activity" />
+
+
+</LinearLayout>

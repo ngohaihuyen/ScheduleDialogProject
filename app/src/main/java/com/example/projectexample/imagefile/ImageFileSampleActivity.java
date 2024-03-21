@@ -31,7 +31,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class ImageFileSampleActivity extends AppCompatActivity {
-    AppCompatButton requestBtn, downloadBtn, readFileBtn, writeFileBtn, displayBtn;
+    AppCompatButton requestBtn, downloadBtn, displayBtn;
     AppCompatImageView resultImg;
     String TAG = "ManhNQ";
     String imageUrl = "https://cafebiz.cafebizcdn.vn/2018/3/23/photo-1-1521770925470754998831.jpg";
@@ -50,8 +50,6 @@ public class ImageFileSampleActivity extends AppCompatActivity {
     private void initViews() {
         requestBtn = findViewById(R.id.request_btn);
         downloadBtn = findViewById(R.id.download_btn);
-        readFileBtn = findViewById(R.id.read_file_btn);
-        writeFileBtn = findViewById(R.id.write_file_btn);
         resultImg = findViewById(R.id.result_img);
         displayBtn = findViewById(R.id.display_btn);
 
@@ -77,23 +75,12 @@ public class ImageFileSampleActivity extends AppCompatActivity {
             }
         });
 
-        /*readFileBtn.setOnClickListener(new View.OnClickListener() {
+        displayBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                readFile();
+                showImageFromPath(imageUrl);
             }
         });
-
-        writeFileBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                writeFile();
-            }
-        });*/
-    }
-
-
-    private void writeFile() {
 
     }
 
@@ -114,7 +101,6 @@ public class ImageFileSampleActivity extends AppCompatActivity {
     }
 
     private void downloadToExternalStorage(String url) {
-        // Tải xuống và ghi dữ liệu vào file
         HttpURLConnection connection = null;
         InputStream inputStream = null;
         FileOutputStream outputStream = null;
@@ -135,15 +121,12 @@ public class ImageFileSampleActivity extends AppCompatActivity {
                     outputStream.write(buffer, 0, bytesRead);
                 }
 
-                // Tải xuống và ghi file thành công
                 showAlertDialog(this, "success", "tải xuống và ghi hình ảnh thành công");
             } else {
-                // Lỗi khi tải xuống hình ảnh
                 showAlertDialog(this, "lỗi", "tải xuôống hình ảnh không thành công");
             }
         } catch (IOException e) {
             e.printStackTrace();
-            // Lỗi khi tải xuống hoặc ghi file
             showAlertDialog(this, "lỗi", "tải xuống hoặc ghi file không thành công");
         }
         if (outputStream != null) {
@@ -165,6 +148,19 @@ public class ImageFileSampleActivity extends AppCompatActivity {
         }
     }
 
+
+
+    public void showImageFromPath(String path){
+            File imageFile = new File(path);
+            if (imageFile.exists()) {
+                Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
+                resultImg.setImageBitmap(bitmap);
+            } else {
+                showAlertDialog(this, "lỗi", "hiển thị image file không thành công");
+
+            }
+        }
+
     private void showAlertDialog(Context context, String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(title)
@@ -176,17 +172,14 @@ public class ImageFileSampleActivity extends AppCompatActivity {
                 })
                 .show();
     }
+    //download to external storage
+    //connect to url
+    //read InputStream
 
+    //get file to write
+    //write to file
 
-    public void showImageFromPath(String path){
-            File imgFile = new File(path);
-            if (imgFile.exists()) {
-                Bitmap bitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-                resultImg.setImageBitmap(bitmap);
-            } else {
-                showAlertDialog(this, "lỗi", "Hiển thị file không thành công");
+    //close all stream & url
 
-            }
-        }
     }
 
