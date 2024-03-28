@@ -13,13 +13,17 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Looper;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
 
 import com.example.projectexample.R;
 
@@ -29,15 +33,35 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Random;
 
-public class ImageFileSampleActivity extends AppCompatActivity {
+public class ImageFileSampleActivity extends AppCompatActivity implements OnDownloadListener, OnCountDownListener {
     AppCompatButton requestBtn, downloadBtn, displayBtn;
     AppCompatImageView resultImg;
+    AppCompatTextView percentTxt;
     String TAG = "ManhNQ";
-    String imageUrl = "https://cafebiz.cafebizcdn.vn/2018/3/23/photo-1-1521770925470754998831.jpg";
-    String fileName = "Silicon_valley_tilte.png";
-    DownloadManager downloadManager;
+    String fileName = "Animal_lion.png";
+    String imageUrl = "https://cdn.firstcry.com/education/2022/11/26141737/Animal-Name-Starting-With-L-For-Kids.jpg";
+    String imageUrl2 = "https://media.wired.com/photos/593261cab8eb31692072f129/master/pass/85120553.jpg";
 
+
+    private ThreadManager threadManager;
+//    private Handler handler = new Handler(Looper.getMainLooper());
+//    private Runnable runnable = new Runnable() {
+//        @Override
+//        public void run() {
+//            Log.d(TAG, "run: "+Thread.currentThread().getName());
+//            downloadToExternalStorage(imageUrl);
+//            handler.post(new Runnable() {
+//                @Override
+//                public void run() {
+//                    showImageFromPath();
+//                }
+//            });
+//        }
+//    };
+
+//    private Thread thread = new Thread(runnable);
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,10 +72,14 @@ public class ImageFileSampleActivity extends AppCompatActivity {
     }
 
     private void initViews() {
+        threadManager = new ThreadManager();
+
+        threadManager.countDown(3,this);
         requestBtn = findViewById(R.id.request_btn);
         downloadBtn = findViewById(R.id.download_btn);
         resultImg = findViewById(R.id.result_img);
         displayBtn = findViewById(R.id.display_btn);
+        percentTxt = findViewById(R.id.percent_txt);
 
         requestBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,27 +91,22 @@ public class ImageFileSampleActivity extends AppCompatActivity {
         downloadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                downloadManager = (DownloadManager)getSystemService(Context.DOWNLOAD_SERVICE);
-
-                Uri uri = Uri.parse(imageUrl);
-
-                DownloadManager.Request request = new DownloadManager.Request(uri);
-                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-
-                Long reference = downloadManager.enqueue(request);
-                downloadToExternalStorage(imageUrl);
+//                Log.d(TAG, "click: "+Thread.currentThread().getName());
+//                if (!thread.isAlive()) {
+//                    thread.start();
+//                }
+                threadManager.downloadImage(getApplicationContext(), imageUrl2, ImageFileSampleActivity.this);
             }
         });
 
         displayBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showImageFromPath(imageUrl);
+                showImageFromPath();
             }
         });
 
     }
-
 
     private void requestPermissions() {
         if (SDK_INT >= Build.VERSION_CODES.R) {
@@ -100,66 +123,65 @@ public class ImageFileSampleActivity extends AppCompatActivity {
         }
     }
 
-    private void downloadToExternalStorage(String url) {
-        HttpURLConnection connection = null;
-        InputStream inputStream = null;
-        FileOutputStream outputStream = null;
+//    private void downloadToExternalStorage(String url) {
+//        HttpURLConnection connection = null;
+//        InputStream inputStream = null;
+//        FileOutputStream outputStream = null;
+//
+//        try {
+//            URL imageurl = new URL(url);
+//            connection = (HttpURLConnection) imageurl.openConnection();
+//            connection.connect();
+//
+//            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+//                inputStream = connection.getInputStream();
+//                File file = getImageFile();
+//                outputStream = new FileOutputStream(file);
+//
+//                byte[] buffer = new byte[1024];
+//                int bytesRead = inputStream.read(buffer);
+//                while (bytesRead != -1) {
+//                    outputStream.write(buffer, 0, bytesRead);
+//                    bytesRead = inputStream.read(buffer);
+//                }
+//
+//                outputStream.close();
+//                inputStream.close();
+//                connection.disconnect();
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
+    private File getImageFile() {
         try {
-            URL imageurl = new URL(url);
-            connection = (HttpURLConnection) imageurl.openConnection();
-            connection.connect();
-
-            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                inputStream = connection.getInputStream();
-                File file = new File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), fileName);
-                outputStream = new FileOutputStream(file);
-
-                byte[] buffer = new byte[1024];
-                int bytesRead;
-                while ((bytesRead = inputStream.read(buffer)) != -1) {
-                    outputStream.write(buffer, 0, bytesRead);
+            File file = new File(this.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), fileName);
+            if (!file.exists()) {
+                boolean isSuccess = file.createNewFile();
+                if (isSuccess) {
+                    return file;
+                } else {
+                    return null;
                 }
-
-                showAlertDialog(this, "success", "tải xuống và ghi hình ảnh thành công");
-            } else {
-                showAlertDialog(this, "lỗi", "tải xuôống hình ảnh không thành công");
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-            showAlertDialog(this, "lỗi", "tải xuống hoặc ghi file không thành công");
-        }
-        if (outputStream != null) {
-            try {
-                outputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        if (inputStream != null) {
-            try {
-                inputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        if (connection != null) {
-            connection.disconnect();
+            return file;
+        } catch (Exception e) {
+            return null;
         }
     }
 
+    public void showImageFromPath() {
+        File file = getImageFile();
 
+        if (file != null && file.exists()) {
+            Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+            resultImg.setImageBitmap(bitmap);
+        } else {
+            showAlertDialog(this, "lỗi", "hiển thị image file không thành công");
 
-    public void showImageFromPath(String path){
-            File imageFile = new File(path);
-            if (imageFile.exists()) {
-                Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
-                resultImg.setImageBitmap(bitmap);
-            } else {
-                showAlertDialog(this, "lỗi", "hiển thị image file không thành công");
-
-            }
         }
+    }
 
     private void showAlertDialog(Context context, String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -172,14 +194,28 @@ public class ImageFileSampleActivity extends AppCompatActivity {
                 })
                 .show();
     }
-    //download to external storage
-    //connect to url
-    //read InputStream
 
-    //get file to write
-    //write to file
-
-    //close all stream & url
-
+    @Override
+    public void onDownloadCompleted() {
+        Log.d(TAG, "onDownloadCompleted: ");
+        showImageFromPath();
     }
+
+    @Override
+    public void onDownloading(int percent) {
+        percentTxt.setText(String.valueOf(percent));
+        Log.d(TAG, "onDownloading: "+percent);
+    }
+
+    @Override
+    public void onUpdateTime(int time) {
+        percentTxt.setText(String.valueOf(time));
+    }
+
+    @Override
+    public void onTimeComplete() {
+        percentTxt.setText("Complete");
+    }
+
+}
 
